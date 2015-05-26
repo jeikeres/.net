@@ -228,7 +228,7 @@
     <Content Include="Informes\MultiCan\Segmento_TipoTx.aspx" />
     <Content Include="Informes\MultiCan\TipoTx_Segmento.aspx" />
     <Content Include="Inicio.aspx" />
-    <Content Include="joaquin\resumen_consolidado\a1\a1-1.aspx" />
+    <Content Include="joaquin\resumen_consolidado\a1\a2.aspx" />
     <Content Include="joaquin\resumen_consolidado\a1\a1.aspx" />
     <Content Include="Manage\Autenticacion\CambiarClave.aspx" />
     <Content Include="Manage\Autenticacion\CambiarClaveMenu.aspx" />
@@ -621,11 +621,11 @@
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="joaquin\resumen_consolidado\a1\a1-1.aspx.designer.vb">
-      <DependentUpon>a1-1.aspx</DependentUpon>
+    <Compile Include="joaquin\resumen_consolidado\a1\a2.aspx.designer.vb">
+      <DependentUpon>a2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="joaquin\resumen_consolidado\a1\a1-1.aspx.vb">
-      <DependentUpon>a1-1.aspx</DependentUpon>
+    <Compile Include="joaquin\resumen_consolidado\a1\a2.aspx.vb">
+      <DependentUpon>a2.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="joaquin\resumen_consolidado\a1\a1.aspx.designer.vb">
