@@ -1,0 +1,230 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="MasterPage.master.vb" Inherits="Web.MasterPage" %>
+<%@ Register Assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeView" TagPrefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxSplitter" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxDocking" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxPopupControl" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxCallbackPanel" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxPanel" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.Linear" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.Circular" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.State" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.Digital" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxRoundPanel" tagprefix="dx" %>
+
+
+<%@ Register assembly="DevExpress.Data.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Utils" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.XtraGauges.v14.1.Core, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraGauges.Base" tagprefix="dx" %>
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+      <link href="App_Themes/StyleSheet.css" rel="Stylesheet" type="text/css" />
+     <script type="text/javascript">
+         function OnNodeClick(s, e) {
+             splitter.GetPaneByName("pane2").SetContentUrl(e.node.name);
+         }
+         function Muestra_Fecha() {
+
+         }
+
+         //-->
+
+</script>
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+            height: 104px;
+        }
+        .style2
+        {
+            width: 100%;
+            height:100%;
+        }
+        </style>
+</head>
+<body style="margin-top:0; margin-left:0; margin-right:0;">
+    <form id="Master_Page" runat="server">
+        <div style="background:rgba(0, 0, 0, 0.8); width:100%; height:28px; z-index:99; position:absolute; bottom:0px; left:0px; vertical-align:middle;"></div>
+    <div style="background-color:transparent; width:100%; height:20px; z-index:99; position:absolute; bottom:0px; left:0px; vertical-align:middle;">
+         <span style="font-family: 'BebasNeueRegular', sans-serif; font-size: 12px; font-weight:bold; margin-left:50px; color: #909090; ">© GESTRAN S.A. - SANTIAGO DE CHILE</span> 
+    </div>
+    <div>
+        <dx:ASPxDockManager ID="ASPxDockManager1" runat="server">
+        </dx:ASPxDockManager>
+        <table class="style1" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td>
+                    <table class="style2" cellpadding="0" cellspacing="0" >
+                        <tr>
+                            <td class="bg_bar_blue2" >
+                                
+                                <dx:ASPxCallbackPanel ID="cbp_banner_superior" runat="server" Width="100%" 
+                                    ClientInstanceName="Banner_Superior" >
+                                    <PanelCollection>
+<dx:PanelContent ID="PanelContent1" runat="server" SupportsDisabledAttribute="True">
+    <table class="dxflInternalEditorTable_MetropolisBlue">
+        <tr>
+            <td  rowspan="2" style="margin-left:50px; width:25%">
+            <img style="z-index:101; margin-left:50px;" alt="Gestran S.A." src="App_Themes/img_slide/logo-blanco.png" />
+                &nbsp;</td>
+            <td rowspan="2"style="width:55%; text-align:center;">
+                <table cellpadding="0" align="center" cellspacing="0">
+                    <tr>
+                        <td>
+                            <dx:ASPxLabel ID="lbl_inf_Nombre_Sistema" runat="server" 
+                                EnableDefaultAppearance="False" style="font-size: 18px" >
+                                <Border BorderColor="#993020" />
+                            </dx:ASPxLabel>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td align="center">
+                <table style="width:100%;">
+                    <tr>
+                        <td style="width:60%">
+                            <dx:ASPxLabel ID="lbl_inf_bienvenido" runat="server">
+                            </dx:ASPxLabel>
+                            <dx:ASPxLabel ID="lbl_inf_nombre_usuario" runat="server">
+                            </dx:ASPxLabel>
+                        </td>
+                        <td style="text-align: right">
+                            <asp:LinkButton ID="lnk_cerrar" runat="server" CssClass="lnk_cerrar"></asp:LinkButton>
+                        </td>
+                    </tr>
+                </table>
+               
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+             <table width="100%">
+                    <tr>
+                        <td style="width:70%; text-align:right;">
+                            <dx:ASPxLabel ID="lbl_inf_dioma" runat="server">
+                            </dx:ASPxLabel>
+                        </td>
+                        <td class="Textos_Top_Banner">
+                            <dx:ASPxComboBox ID="cb_idioma" runat="server" CssClass="Textos_Top_Banner" 
+                                ForeColor="#333333" Width="100px">
+                                <ClientSideEvents SelectedIndexChanged="function(s, e) {
+   
+      Menu_Arbol.PerformCallback();
+      Banner_Superior.PerformCallback();
+
+}" />
+<ClientSideEvents SelectedIndexChanged="function(s, e) {
+   
+      Menu_Arbol.PerformCallback();
+      Banner_Superior.PerformCallback();
+
+}"></ClientSideEvents>
+                            </dx:ASPxComboBox>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+                                        </dx:PanelContent>
+</PanelCollection>
+                                </dx:ASPxCallbackPanel>
+                                
+                            </td>
+                        </tr>
+                        </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                     <dx:ASPxSplitter ID="ASPxSplitter1" runat="server" 
+                         ClientInstanceName="splitter" ShowCollapseBackwardButton="True" 
+                         ShowCollapseForwardButton="True" Height="550px" SeparatorSize="10px" 
+                         Theme="Aqua">
+            <Panes>
+                <dx:SplitterPane Size="230px" ScrollBars="Vertical">
+                    <ContentCollection>
+                        <dx:SplitterContentControl ID="SplitterContentControl1" runat="server" SupportsDisabledAttribute="True" >
+                        
+                            <table class="style2">
+                                <tr>
+                                    <td valign="top">
+                                        <dx:ASPxCallbackPanel ID="cbp_menu" runat="server" Width="300px" 
+                                            ClientInstanceName = "Menu_Arbol">
+                                            <PanelCollection>
+                                                <dx:PanelContent ID="PanelContent2" runat="server" SupportsDisabledAttribute="True">
+                                                    <dx:ASPxTreeView ID="tvw_arbol" runat="server" Theme="MetropolisBlue" 
+                                                        Width="250px">
+                                                        <ClientSideEvents NodeClick="OnNodeClick" />
+                                                    </dx:ASPxTreeView>
+                                                </dx:PanelContent>
+                                            </PanelCollection>
+                                        </dx:ASPxCallbackPanel>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom">
+                                        <dx:ASPxRoundPanel ID="rp_conectividad" runat="server" 
+                                            HeaderText="" Width="200px" Theme="SoftOrange">
+                                            <PanelCollection>
+                                                <dx:PanelContent ID="PanelContent3" runat="server" SupportsDisabledAttribute="True">
+                                                    <table class="dxflInternalEditorTable_MetropolisBlue">
+                                                        <tr>
+                                                            <td align="center">
+                                                                <asp:Label ID="lbl_des_conectividad" runat="server"></asp:Label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="center">
+                                                                <dx:ASPxGaugeControl ID="gc_Conectividad" runat="server" BackColor="White" 
+                                                                    Height="250px" Width="250px">
+                                                                    <LayoutPadding All="0" Bottom="0" Left="0" Right="0" Top="0" />
+                                                                </dx:ASPxGaugeControl>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </dx:PanelContent>
+                                            </PanelCollection>
+                                        </dx:ASPxRoundPanel>
+                                    </td>
+                                </tr>
+                            </table>
+                        </dx:SplitterContentControl>
+                    </ContentCollection>
+                </dx:SplitterPane>
+                <dx:SplitterPane ContentUrl="Informes/PanelControl.aspx" Name="pane2" ScrollBars="Auto">
+                    <ContentCollection>
+                        <dx:SplitterContentControl ID="SplitterContentControl2" runat="server" SupportsDisabledAttribute="True">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </dx:SplitterContentControl>
+                    </ContentCollection>
+                </dx:SplitterPane>
+            </Panes>
+        </dx:ASPxSplitter>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                     <dx:ASPxLabel ID="lbl_param_idusuario" runat="server" Visible="False">
+                     </dx:ASPxLabel>
+                                        <asp:Label runat="server" ID="lbl_menu" Visible="False"></asp:Label>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

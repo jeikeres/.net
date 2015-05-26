@@ -1,0 +1,139 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="MasterSlide.master.vb" Inherits="Web.MasterSlide" %>
+
+<%@ Register assembly="DevExpress.Web.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
+
+
+<%@ Register assembly="DevExpress.Web.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx1" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title></title>
+     <link href="App_Themes/Default/css/StyleSheet.css" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+body {
+    overflow:hidden;
+}
+.Textos_Top_Banner
+{
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	color: Gray;
+}
+        .style3
+        {
+            width: 170px;
+        }
+        
+        
+.dxisControl .dxis-itemTextArea {
+    bottom: 180px;
+    margin-left:850px;
+    width: 450px;
+    height: 120px;
+    padding: 15px 16px 21px;
+    color: #fff;
+    border-radius:5px;
+    box-shadow: 0px 4px 0px rgba(50, 50, 50, 0.3);
+    background-color: #333333;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.dxisControl .dxis-itemTextArea a {
+    color: white;
+}
+
+.dxisControl .dxis-itemTextArea p {
+    color: white;
+}
+
+.dxisControl .dxcolor
+{
+    background:rgba(153, 48, 32, 0.95);
+    
+    }
+        
+        .dxflInternalEditorTable_Aqua
+        {
+            width: 200px;
+        }
+        .style6
+        {
+            height: 33px;
+        }
+        
+        </style>
+        <link href="App_Themes/StyleSheet.css" rel="Stylesheet" type="text/css" />
+        <script type="text/javascript">
+            function obtiene_resolucion() {
+                var curr_width = screen.width;
+                document.getElementById("txtanchopx").value = curr_width;
+            }
+        </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="margin-top:0; margin-left:0; margin-right:0;">
+    <form id="form1" runat="server" autocomplete="off">
+        <div style="background:rgba(153, 48, 32, 0.9); width:100%; vertical-align:middle; height:80px; z-index:99; position:absolute; top:0px; left:0px;">
+            <div class="image_logo"></div>
+        </div>
+        <div style="background:rgba(0, 0, 0, 0.8); width:100%; height:28px; z-index:99; position:absolute; bottom:0px; left:0px; vertical-align:middle;">
+        
+        </div>
+        <div style="background-color:transparent; width:100%; height:20px; z-index:99; position:absolute; bottom:0px; left:0px; vertical-align:middle;">
+             <span style="font-family: 'BebasNeueRegular', sans-serif; font-size: 12px; font-weight:bold; margin-left:50px; color: #909090; ">© GESTRAN S.A. - SANTIAGO DE CHILE</span> 
+        </div>
+        <div style="position:absolute; left:30px; top:110px; z-index:110; background-color:transparent">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="image_pattern"></div>
+    
+        <div style="height:600px; position:relative; z-index:80;">        
+            <dx:ASPxImageSlider ID="ASPxImageSlider1" runat="server" 
+                BinaryImageCacheFolder="~\Thumb\" Width="100%" Height="800px" ForeColor="#333333">
+                <SettingsImageArea ImageSizeMode="ActualSizeOrFit" NavigationButtonVisibility="None" ItemTextVisibility="Always" />
+                <SettingsNavigationBar Mode="Dots" />
+                <SettingsImageArea ItemTextVisibility="Always" NavigationButtonVisibility="None"></SettingsImageArea>
+                <SettingsNavigationBar Mode="Dots"></SettingsNavigationBar>
+                <SettingsSlideShow AutoPlay="true" StopPlayingWhenPaging="false" PausePlayingWhenMouseOver="false" PlayPauseButtonVisibility="Faded"></SettingsSlideShow>
+                <Items>
+                    <dx:ImageSliderItem ImageUrl="~/App_Themes/Default/img/slide/slide01.jpg">
+                        <TextTemplate>
+                            <h3>INTELIGENCIA TRANSACCIONAL</h3>
+                            <p>Herramientas para el análisis integral y la gestión eficiente de las transacciones</p>
+                        </TextTemplate>
+                    </dx:ImageSliderItem>
+                    <dx:ImageSliderItem ImageUrl="~/App_Themes/Default/img/slide/slide02.jpg">
+                        <TextTemplate>
+                            <h3>GESTIÓN EFECTIVA DE DATOS Y TRANSACCIONES</h3>
+                            <p>Apoyo a la reducción de costos y toma de decisiones oportunas</p>
+                        </TextTemplate>
+                    </dx:ImageSliderItem>
+                    <dx:ImageSliderItem ImageUrl="~/App_Themes/Default/img/slide/slide03.jpg">
+                        <TextTemplate>
+                            <h3>SOLO SE PUEDE GESTIONAR, LO QUE SE MIDE</h3>
+                            <p>Colaboramos para una gestión eficiente a través del análisis integral de las transacciones</p>
+                        </TextTemplate>
+                    </dx:ImageSliderItem>
+                </Items>
+                    <Styles>
+                        <ItemTextArea cssclass="dxcolor">
+
+                        </ItemTextArea>
+                    </Styles>
+            </dx:ASPxImageSlider>
+        </div>
+        <p>
+            <asp:HiddenField ID="txtanchopx" runat="server"></asp:HiddenField>
+        </p>
+    </form>
+</body>
+</html>

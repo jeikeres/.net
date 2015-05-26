@@ -1,0 +1,62 @@
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Informe1.aspx.vb" Inherits="Web.Informe1" %>
+
+<%@ Register assembly="DevExpress.Web.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.ASPxPivotGrid.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxPivotGrid" tagprefix="dx" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body style="margin-left:0px; margin-right:0px; margin-top:0px;">
+    <form id="form1" runat="server">
+    <div>
+    
+        <dx:ASPxFormLayout ID="layx_informe" runat="server" Theme="MetropolisBlue" Width="100%">
+            <Items>
+                <dx:LayoutGroup Caption="Título del Informe">
+                    <Items>
+                        <dx:LayoutItem Caption="">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxButton ID="btnx_descifrar" runat="server" Theme="MetropolisBlue">
+                                    </dx:ASPxButton>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <dx:ASPxButton ID="btnx_exportar_XLS" runat="server" Theme="MetropolisBlue">
+                                    </dx:ASPxButton>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <dx:ASPxButton ID="btnx_exportar_PDF" runat="server" Theme="MetropolisBlue">
+                                    </dx:ASPxButton>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <dx:ASPxButton ID="btnx_exportar_CSV" runat="server" Theme="MetropolisBlue">
+                                    </dx:ASPxButton>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <dx:ASPxButton ID="btnx_guardar_Layout" runat="server" Theme="MetropolisBlue">
+                                    </dx:ASPxButton>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                    </Items>
+                </dx:LayoutGroup>
+                <dx:LayoutGroup Caption="Titulo" ShowCaption="False">
+                    <Items>
+                        <dx:LayoutItem Caption="">
+                            <LayoutItemNestedControlCollection>
+                                <dx:LayoutItemNestedControlContainer runat="server">
+                                    <dx:ASPxPivotGrid ID="pvgx_datos" runat="server" ClientIDMode="AutoID" Theme="MetropolisBlue" Width="100%">
+                                    </dx:ASPxPivotGrid>
+                                </dx:LayoutItemNestedControlContainer>
+                            </LayoutItemNestedControlCollection>
+                        </dx:LayoutItem>
+                    </Items>
+                </dx:LayoutGroup>
+            </Items>
+        </dx:ASPxFormLayout>
+    
+    </div>
+    </form>
+</body>
+</html>

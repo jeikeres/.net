@@ -1,0 +1,225 @@
+﻿Imports Negocio
+Imports System.Data
+Imports DevExpress.Web
+
+Imports System.IO
+'Imports DevExpress.XtraGauges.Win
+Imports DevExpress.Web.ASPxGauges.Gauges.State
+Imports DevExpress.Web.ASPxGauges
+Imports DevExpress.XtraGauges.Base
+Imports DevExpress.XtraGauges.Core.Model
+Imports DevExpress.Web.ASPxGauges.Gauges.Circular
+Imports DevExpress.XtraGauges.Core.Drawing
+Imports System.Drawing
+Imports DevExpress.Web.ASPxTreeView
+
+Public Class MasterPage
+    Inherits System.Web.UI.MasterPage
+
+    Dim _Acceso As New cls_Sistema
+    Dim _Menu As New cls_Menu
+    Dim _Ds As DataSet
+    Dim _Ds_b As DataSet
+    Dim _st As New System.Diagnostics.StackTrace()
+    Dim _Ob_Name As String
+    Dim _Flag As Boolean = False
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Request.Cookies("IDUser_R3Ta1l") Is Nothing Or Session("Languague_ID") Is Nothing Then
+            Response.Write("<script>window.open('index_slide2.aspx','_top');<" & Chr(47) & "script>")
+            Return
+        End If
+
+        If Not IsPostBack Then
+            If Not Request.Cookies("IDUser_R3Ta1l") Is Nothing And IsNumeric(Request.Params("Lng")) Then
+
+                Me.CreateCircularGauge()
+                Me.lbl_param_idusuario.Text = Request.Cookies("IDUser_R3Ta1l").Value
+                Me.Pobla_Idioma()
+                PoblarMenu()
+                Me.Carga_Informacion_Label()
+            Else
+                Response.Write("<script>window.open('index.aspx','_top');<" & Chr(47) & "script>")
+            End If
+        End If
+    End Sub
+    Public Sub PoblarMenu()
+        Dim Table As New DataTable
+        tvw_arbol.Nodes.Clear()
+        Table = _Menu.DatosMenu(Request.Cookies("IDUser_R3Ta1l").Value, Session("Languague_ID"))
+        CrearArbol(Table, Me.tvw_arbol.Nodes, "0")
+    End Sub
+    Private Sub CrearArbol(ByVal table As DataTable, ByVal nodesCollection As TreeViewNodeCollection, ByVal parentID As String)
+        For i As Integer = 0 To table.Rows.Count - 1
+            If table.Rows(i)("IDPadre").ToString() = parentID Then
+                Dim node As New TreeViewNode
+                node.Text = table.Rows(i)("NOMBRE").ToString()
+                node.Name = table.Rows(i)("URL").ToString()
+                node.ToolTip = table.Rows(i)("ID").ToString()
+                node.Image.Url = "App_Themes/Img_TreeView/" & Trim(table.Rows(i)("IMAGEN").ToString())
+                nodesCollection.Add(node)
+                CrearArbol(table, node.Nodes, node.ToolTip)
+            End If
+        Next i
+    End Sub
+
+    Private Sub CreateCircularGauge()
+        ' Creates a new instance of the ASPxGaugeControl class with default settings.
+        'Dim gaugeControl As ASPxGaugeControl = New ASPxGaugeControl()
+        'Me.gc_Conectividad
+        ' Creates a new instance of the CircularGauge class and adds it 
+        ' to the gauge control's Gauges collection.
+        Dim circularGauge As Gauges.Circular.CircularGauge = gc_Conectividad.AddGauge(GaugeType.Circular)
+        '11111111111111
+
+        ' Adds the default elements (a scale, background layer, needle and spindle cap).
+        circularGauge.AddDefaultElements()
+
+        ' Changes the background layer's paint style.
+        Dim background As ArcScaleBackgroundLayer = circularGauge.BackgroundLayers(0)
+        background.ShapeType = BackgroundLayerShapeType.CircularFull_Style11
+        'BackgroundLayerShapeType.CircularFull_Style26,CircularFull_Style22.CircularFull_Style19
+        'CircularFull_Style11
+
+        ' Customizes the scale's settings.
+        Dim scale As ArcScaleComponent = circularGauge.Scales(0)
+        scale.MinValue = 0
+        scale.MaxValue = 100
+        scale.Value = _Acceso.RetornaConectividad()
+        scale.MajorTickCount = 6
+        scale.MajorTickmark.FormatString = "{0:F0}"
+        scale.MajorTickmark.ShapeType = TickmarkShapeType.Circular_Style15_1
+        scale.MajorTickmark.ShapeOffset = -9
+        scale.MajorTickmark.AllowTickOverlap = True
+        scale.MinorTickCount = 3
+        scale.MinorTickmark.ShapeType = TickmarkShapeType.Circular_Default1
+        scale.AppearanceTickmarkText.TextBrush = New SolidBrushObject(Color.Black)
+
+        ' Changes the needle's paint style.
+        Dim needle As ArcScaleNeedleComponent = circularGauge.Needles(0)
+        needle.ShapeType = NeedleShapeType.CircularFull_Style12
+
+        ' Adds the gauge control to the Page.
+        gc_Conectividad.Width = 150
+        gc_Conectividad.Height = 150
+        gc_Conectividad.AutoLayout = True
+
+    End Sub
+
+    Public Sub Pobla_Idioma()
+        Try
+            _Ds = _Acceso.Extrae_Idioma()
+
+            If _Acceso.Estado_Query Then
+                If _Ds.Tables.Count Then
+                    For x As Integer = 0 To _Ds.Tables(0).Rows.Count - 1
+                        Me.cb_idioma.Items.Add(_Ds.Tables(0).Rows(x)("LNG_DESCRIPCION"))
+                        Me.cb_idioma.Items(x).Value = CInt(_Ds.Tables(0).Rows(x)("LNG_ID"))
+                        If CInt(_Ds.Tables(0).Rows(x)("LNG_ID")) = Request.Params("Lng") Then
+                            _Flag = True
+                        End If
+                    Next
+                    If _Flag Then
+                        Me.cb_idioma.Text = Request.Params("Lng")
+                    Else
+                        _Acceso.WriteLog(Request.Cookies("IDUser_R3Ta1l").Value, Nothing, cls_variables.Id_Tipo_Log.Manipulacion_URL, Me.Master_Page.Name)
+                        Response.Redirect("Close.aspx")
+                    End If
+
+                End If
+            End If
+
+        Catch ex As Exception
+            _Acceso.WriteLog(Request.Cookies("IDUser_R3Ta1l").Value, ex.Message, cls_variables.Id_Tipo_Log.Error_Cp_Web, Me.Master_Page.Name)
+        End Try
+
+    End Sub
+    Public Sub Master_Page_Genera_Arbol(ByVal _ID_Usuario As String, ByVal _Id_Lenguaje As Integer)
+
+        Try
+            Me.tvw_arbol.Nodes.Clear()
+            _st = New System.Diagnostics.StackTrace()
+            _Ob_Name = _st.GetFrame(0).GetMethod().Name
+            Dim Proc_param As New ArrayList : Dim Wb_Param As New ArrayList
+            Proc_param = New ArrayList : Wb_Param = New ArrayList
+            Proc_param.Add("@Bloque") : Wb_Param.Add("Extrae_Padre_Menu")
+            Proc_param.Add("@USR_ID") : Wb_Param.Add(_ID_Usuario)
+            Proc_param.Add("@LNG_ID") : Wb_Param.Add(_Id_Lenguaje)
+            Dim tvw_node_hijo As DevExpress.Web.ASPxTreeView.TreeViewNode
+            Dim tvw_node_hijo_hijo As DevExpress.Web.ASPxTreeView.TreeViewNode
+            _Ds = _Acceso.Genera_Consultas(Wb_Param, Proc_param)
+            If _Acceso.Estado_Query Then
+                For _xa As Integer = 0 To _Ds.Tables(0).Rows.Count - 1
+
+                    tvw_node_hijo_hijo = New DevExpress.Web.ASPxTreeView.TreeViewNode
+                    tvw_node_hijo_hijo.Name = Trim(_Ds.Tables(0).Rows(_xa)("NMP_URL"))
+                    tvw_node_hijo_hijo.Text = Trim(_Ds.Tables(0).Rows(_xa)("NMP_NOMBRE"))
+                    tvw_node_hijo_hijo.ToolTip = Trim(_Ds.Tables(0).Rows(_xa)("NMP_DESCRIPCION"))
+                    tvw_node_hijo_hijo.Image.Url = "App_Themes/Img_TreeView/" & Trim(_Ds.Tables(0).Rows(_xa)("NMP_IMAGE"))
+
+
+                    Proc_param = New ArrayList : Wb_Param = New ArrayList
+                    Proc_param.Add("@Bloque") : Wb_Param.Add("Extrae_Hijos_Menu")
+                    Proc_param.Add("@USR_ID") : Wb_Param.Add(_ID_Usuario)
+                    Proc_param.Add("@NMP_ID") : Wb_Param.Add(_Ds.Tables(0).Rows(_xa)("NMP_ID"))
+                    Proc_param.Add("@LNG_ID") : Wb_Param.Add(_Id_Lenguaje)
+                    _Ds_b = _Acceso.Genera_Consultas(Wb_Param, Proc_param)
+                    If _Acceso.Estado_Query Then
+                        'Recorremos nodos hijos
+                        For _xb As Integer = 0 To _Ds_b.Tables(0).Rows.Count - 1
+                            tvw_node_hijo = New DevExpress.Web.ASPxTreeView.TreeViewNode
+                            tvw_node_hijo.Name = Trim(_Ds_b.Tables(0).Rows(_xb)("NMH_URL"))
+                            tvw_node_hijo.Text = Trim(_Ds_b.Tables(0).Rows(_xb)("NMH_NOMBRE"))
+                            tvw_node_hijo.ToolTip = Trim(_Ds_b.Tables(0).Rows(_xb)("NMH_DESCRIPCION"))
+                            tvw_node_hijo.Image.Url = "App_Themes/Img_TreeView/" & Trim(_Ds_b.Tables(0).Rows(_xb)("NMH_IMAGE"))
+                            tvw_node_hijo_hijo.Nodes.Add(tvw_node_hijo)
+                        Next
+                    End If
+                    Me.tvw_arbol.Nodes.Add(tvw_node_hijo_hijo)
+                Next
+            End If
+        Catch ex As Exception
+            _Acceso.WriteLog(Request.Cookies("IDUser_R3Ta1l").Value, ex.Message, cls_variables.Id_Tipo_Log.Error_Cp_Web, Me.Master_Page.Name)
+        End Try
+    End Sub
+
+    Protected Sub cbp_menu_Callback(ByVal sender As Object, ByVal e As DevExpress.Web.ASPxClasses.CallbackEventArgsBase) Handles cbp_menu.Callback
+        Session("Languague_ID") = Me.cb_idioma.Value
+        DevExpress.Web.ASPxClasses.ASPxWebControl.RedirectOnCallback("Principal.aspx?Lng=" & Me.cb_idioma.Value)
+    End Sub
+    Public Sub Carga_Informacion_Label()
+        Try
+            Me.lbl_inf_nombre_usuario.Text = Request.Cookies("DatosUser_R3Ta1l").Value
+
+            'Me.lbl_inf_cerrar.Text =
+            lnk_cerrar.Text = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" & _Acceso.Extrae_Info_Textos_Objetos(cls_variables.Id_Controles.Lbl_inf_Cerrar, Me.cb_idioma.Value)
+
+            Me.lbl_inf_Nombre_Sistema.Text = _Acceso.Extrae_Info_Textos_Objetos(cls_variables.Id_Controles.Lbl_inf_Nombre_Sistema, Me.cb_idioma.Value)
+            Me.lbl_inf_bienvenido.Text = _Acceso.Extrae_Info_Textos_Objetos(cls_variables.Id_Controles.Lbl_inf_Bienvenido, Me.cb_idioma.Value) '& " " & Request.Cookies("DatosUser_R3Ta1l").Value '& " - " & _Acceso.Extrae_Info_Textos_Objetos(cls_variables.Id_Controles.Lbl_inf_Nombre_Sistema, Me.cb_idioma.Value)
+            Me.lbl_inf_dioma.Text = _Acceso.Extrae_Info_Textos_Objetos(cls_variables.Id_Controles.Lbl_inf_Idioma, Me.cb_idioma.Value)
+            Me.lbl_des_conectividad.Text = _Acceso.Extrae_Info_Textos_Objetos(cls_variables.Id_Controles.lbl_des_conectividad, Me.cb_idioma.Value)
+            Me.rp_conectividad.HeaderText = UCase(_Acceso.Extrae_Info_Textos_Objetos(cls_variables.Id_Controles.rp_conectividad_hd, Me.cb_idioma.Value))
+        Catch ex As Exception
+            _Acceso.WriteLog(Request.Cookies("IDUser_R3Ta1l").Value, Nothing, cls_variables.Id_Tipo_Log.Error_Cp_Web, Me.Master_Page.Name)
+        End Try
+
+    End Sub
+
+    Protected Sub cbp_banner_superior_Callback(ByVal sender As Object, ByVal e As DevExpress.Web.ASPxClasses.CallbackEventArgsBase) Handles cbp_banner_superior.Callback
+        Me.Carga_Informacion_Label()
+    End Sub
+
+    Protected Sub lnk_cerrar_Click(sender As Object, e As EventArgs) Handles lnk_cerrar.Click
+        _Acceso.WriteLog(Request.Cookies("IDUser_R3Ta1l").Value, Nothing, cls_variables.Id_Tipo_Log.Cierre_Sesion, Me.Master_Page.Name)
+        If (Not Request.Cookies("IDUser_R3Ta1l") Is Nothing) Then
+            Dim myCookie As HttpCookie
+            myCookie = New HttpCookie("IDUser_R3Ta1l")
+            myCookie.Expires = DateTime.Now.AddDays(-1D)
+            Response.Cookies.Add(myCookie)
+
+            Response.Write("<script>window.open('index_slide2.aspx','_top');<" & Chr(47) & "script>")
+        End If
+    End Sub
+
+    'EVOLUTIVO INTERNET TIPO MONEDA ORDER BY DEL QUERY / cantidad no centrado
+End Class

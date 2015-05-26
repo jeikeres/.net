@@ -1,0 +1,477 @@
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="TD.aspx.vb" Inherits="Web.TD_DBAUTO" %>
+
+<%@ Register Assembly="DevExpress.Web.ASPxTreeList.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxTreeList" TagPrefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.ASPxPivotGrid.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxPivotGrid" tagprefix="dx" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+        <script type="text/javascript">
+            // <![CDATA[
+            function ClearSelection() {
+                TreeList.SetFocusedNodeKey("");
+                UpdateControls(null, "");
+            }
+            function UpdateSelection() {
+                //                var employeeName = "";
+                //                var focusedNodeKey = TreeList.GetFocusedNodeKey();
+                //                if (focusedNodeKey != "")
+                //                    employeeName = TreeList.cpSucursal[focusedNodeKey];
+                //                UpdateControls(focusedNodeKey, employeeName);
+            }
+            function UpdateControls(key, text) {
+                checkComboBoxPer.SetText(text);
+                checkComboBoxPer.SetKeyValue(key);
+                checkComboBoxPer.HideDropDown();
+                //                UpdateButtons();
+            }
+            //            function UpdateButtons() {
+            //                clearButton.SetEnabled(checkComboBoxPer.GetText() != "");
+            //                selectButton.SetEnabled(TreeList.GetFocusedNodeKey() != "");
+            //            }
+            function OnDropDown() {
+                TreeList.SetFocusedNodeKey(checkComboBoxPer.GetKeyValue());
+                TreeList.MakeNodeVisible(TreeList.GetFocusedNodeKey());
+            }
+            // ]]> 
+        </script>
+    <script src="../../../App_Themes/Default/js/ddex.js"></script>
+     <link href="../../../App_Themes/Default/css/StyleSheet.css" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .auto-style1
+        {
+            width: 894px;
+        }
+        .auto-style3
+        {
+            width: 254px;
+        }
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+
+                               <dx:ASPxCallbackPanel ID="cpx_td" runat="server" Width="100%">
+                                <PanelCollection>
+                                    <dx:PanelContent ID="PanelContent1" runat="server"> 
+
+<dx:ASPxRoundPanel ID="rdpx_header" runat="server" HeaderText="DÉBITO AUTOMÁTICO - Tabla Dinámica" ShowCollapseButton="true" Theme="MetropolisBlue" Width="100%">
+            <PanelCollection>
+<dx:PanelContent runat="server">
+    <dx:ASPxRoundPanel ID="rdpx_prefiltros" runat="server" HeaderText="Pre-Filtros" ShowCollapseButton="True" Theme="MetropolisBlue" View="GroupBox" Width="100%">
+        <PanelCollection>
+            <dx:PanelContent runat="server">
+                <table style="width:100%;">
+                    <tr>
+                        <td>
+                            <dx:ASPxLabel ID="lblx_nperiodo" Text="Periodo" Theme="MetropolisBlue" runat="server">
+                            </dx:ASPxLabel>
+                        </td>
+                        <td>
+                            <dx:ASPxLabel ID="lblx_nfranja" runat="server" Text="Franja Horaria" Theme="MetropolisBlue">
+                            </dx:ASPxLabel>
+                        </td>
+                        <td>
+                            <dx:ASPxLabel ID="lblx_nsegmento" runat="server" Text="Segmento" Theme="MetropolisBlue">
+                            </dx:ASPxLabel>
+                        </td>
+                        <td>
+                            <dx:ASPxLabel ID="lblx_ngrupo" runat="server" Text="Grupo" Theme="MetropolisBlue">
+                            </dx:ASPxLabel>
+                        </td>
+                        <td>
+                            <dx:ASPxLabel ID="lblx_noficina" runat="server" Text="Oficina" Theme="MetropolisBlue" Visible="False">
+                            </dx:ASPxLabel>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                                        <dx:ASPxDropDownEdit ID="dde_periodo" runat="server" AllowUserInput="False" AnimationType="Fade" ClientInstanceName="checkComboBoxPer" NullText="Seleccione Período..." Theme="MetropolisBlue" Width="150px">
+                                            <DropDownWindowTemplate>
+                                                <div>
+                                                    <dx:ASPxTreeList ID="TreeList" runat="server" ClientInstanceName="TreeList" DataSourceID="sds_Mes" KeyFieldName="IND_ID" ParentFieldName="PRC_ID" Theme="MetropolisBlue" Width="500px">
+                                                        <SettingsSelection AllowSelectAll="true" Enabled="True" Recursive="true" />
+                                                        <Settings ScrollableHeight="300" VerticalScrollBarMode="Auto" />
+                                                        <SettingsBehavior AllowFocusedNode="true" AutoExpandAllNodes="true" FocusNodeOnLoad="false" />
+                                                        <SettingsPager Mode="ShowAllNodes">
+                                                        </SettingsPager>
+                                                        <Styles>
+                                                            <Node Cursor="pointer">
+                                                            </Node>
+                                                            <Indent Cursor="default">
+                                                            </Indent>
+                                                        </Styles>
+                                                        <Columns>
+                                                            <dx:TreeListTextColumn Caption="(Mostrar Todos)" FieldName="NOMBRE_INTERNO" VisibleIndex="2">
+                                                            </dx:TreeListTextColumn>
+                                                        </Columns>
+                                                    </dx:ASPxTreeList>
+                                                </div>
+                                                <table style="background-color: White; width: 100%;">
+                                                    <tr>
+                                                        <td style="text-align: right; padding: 10px;">
+                                                            <dx:ASPxButton ID="closeButton" runat="server" AutoPostBack="false" Text="Aceptar" Theme="MetropolisBlue">
+                                                                <ClientSideEvents Click="function(s,e) { checkComboBoxPer.HideDropDown(); cpx_td.PerformCallback(); }" />
+                                                            </dx:ASPxButton>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </DropDownWindowTemplate> <ClientSideEvents CloseUp="function(s, e) {cpx_td.PerformCallback();}" />
+                                        </dx:ASPxDropDownEdit>
+
+                        </td>
+                        <td>
+                            
+                        <dx:ASPxDropDownEdit ID="dde_franja" ClientInstanceName="checkComboBox" runat="server" Width="150px" Theme="MetropolisBlue" NullText="Seleccione Franja...">
+                            <DropDownWindowStyle BackColor="#EDEDED" />
+                                <DropDownWindowTemplate>
+                                    <dx:ASPxListBox Width="250px" Height="300px" DataSourceID="SqlDataFiltrosFranja" ValueField = "CODIGO" TextField = "GLOSA"
+                                                    ID="lstx_franja" Theme="MetropolisBlue" ClientInstanceName="checkListBox" SelectionMode="CheckColumn" runat="server">
+                                        <Border BorderStyle="None" />
+                                        <BorderBottom BorderStyle="Solid" BorderWidth="1px" BorderColor="#DCDCDC" />
+                                        <ClientSideEvents SelectedIndexChanged="OnListBoxSelectionChanged" />
+                                    </dx:ASPxListBox>
+                                    <table style="width: 100%">
+                                    <tr>
+                                        <td style="padding: 4px">
+                                            <dx:ASPxButton ID="ASPxButtonFH" Theme="MetropolisBlue" AutoPostBack="False" runat="server" Text="Aceptar" style="float: right">
+                                                <ClientSideEvents Click="function(s, e){ checkComboBox.HideDropDown(); }" />
+                                            </dx:ASPxButton>
+                                        </td>
+                                    </tr>
+                                    </table>
+                            </DropDownWindowTemplate>   
+                            <ClientSideEvents TextChanged="SynchronizeListBoxValues" DropDown="SynchronizeListBoxValues" />  
+                        </dx:ASPxDropDownEdit>
+                        </td>
+                        <td>
+                            <dx:ASPxDropDownEdit ID="dde_segmento" ClientInstanceName="checkComboBoxSeg" runat="server"  Width="150px" Theme="MetropolisBlue" NullText="Seleccione Segmento...">
+                                                                  <DropDownWindowStyle BackColor="#EDEDED" />
+                                                                        <DropDownWindowTemplate>
+                                                                            <dx:ASPxListBox Width="250px" Height="300px" ID="lstx_segmento" ValueField = "CODIGO" 
+                                                                                TextField = "GLOSA" Theme="MetropolisBlue" DataSourceID = "SqlDataFiltrosSegmento" ClientInstanceName="checkListBoxSeg" SelectionMode="CheckColumn" runat="server">
+                                                                                <Border BorderStyle="None" />
+                                                                                <BorderBottom BorderStyle="Solid" BorderWidth="1px" BorderColor="#DCDCDC" />
+                                                                                <ClientSideEvents SelectedIndexChanged="OnListBoxSelectionChangedSeg" />
+                                                                            </dx:ASPxListBox>
+                                                                            <table style="width: 100%">
+                                                                            <tr>
+                                                                                <td style="padding: 4px">
+                                                                                    <dx:ASPxButton ID="ASPxButtonSG" Theme="MetropolisBlue" AutoPostBack="False" runat="server" Text="Aceptar" style="float: right">
+                                                                                        <ClientSideEvents Click="function(s, e){ checkComboBoxSeg.HideDropDown(); }" />
+                                                                                    </dx:ASPxButton>
+                                                                                </td>
+                                                                            </tr>
+                                                                            </table>
+                                                                    </DropDownWindowTemplate> 
+                                                                    <ClientSideEvents TextChanged="SynchronizeListBoxValuesSeg" DropDown="SynchronizeListBoxValuesSeg" />      
+                                                                </dx:ASPxDropDownEdit>
+                        </td>
+                        <td>
+                            <dx:ASPxDropDownEdit ID="dde_grupo" ClientInstanceName="checkComboBoxGpo" runat="server"  Width="150px" Theme="MetropolisBlue" NullText="Seleccione Grupo...">
+                                                                  <DropDownWindowStyle BackColor="#EDEDED" />
+                                                                        <DropDownWindowTemplate>
+                                                                            <dx:ASPxListBox Width="250px" Theme="MetropolisBlue" Height="300px" ID="lstx_grupo" DataSourceID = "SqlDataFiltrosGrupo" 
+                                                                                ValueField = "CODIGO" TextField = "GLOSA" ClientInstanceName="checkListBoxGpo" SelectionMode="CheckColumn" runat="server">
+                                                                                <Border BorderStyle="None" />
+                                                                                <BorderBottom BorderStyle="Solid" BorderWidth="1px" BorderColor="#DCDCDC" />
+                                                                                <ClientSideEvents SelectedIndexChanged="OnListBoxSelectionChangedGpo" />
+                                                                            </dx:ASPxListBox>
+                                                                            <table style="width: 100%">
+                                                                            <tr>
+                                                                                <td style="padding: 4px">
+                                                                                    <dx:ASPxButton ID="ASPxButtonGR" Theme="MetropolisBlue" AutoPostBack="False" runat="server" Text="Aceptar" style="float: right">
+                                                                                        <ClientSideEvents Click="function(s, e){ checkComboBoxGpo.HideDropDown(); }" />
+                                                                                    </dx:ASPxButton>
+                                                                                </td>
+                                                                            </tr>
+                                                                            </table>
+                                                                    </DropDownWindowTemplate>
+                                                                    <ClientSideEvents TextChanged="SynchronizeListBoxValuesGpo" DropDown="SynchronizeListBoxValuesGpo" /> 
+                                                                </dx:ASPxDropDownEdit>
+                        </td>
+                        <td><dx:ASPxDropDownEdit ID="dde_oficina" ClientInstanceName="checkComboBoxOfi" runat="server"  Width="150px" Theme="MetropolisBlue" NullText="Seleccione Oficina..." Visible="False">
+                                                                  <DropDownWindowStyle BackColor="#EDEDED" />
+                                                                        <DropDownWindowTemplate>
+                                                                            <dx:ASPxListBox Width="250px" Height="300px" Theme="MetropolisBlue" ID="lstx_oficina"  ClientInstanceName="checkListBoxOfi" DataSourceID = "SqlDataFiltrosOficina" ValueField = "CODIGO" TextField = "GLOSA" SelectionMode="CheckColumn" runat="server">
+                                                                                <Border BorderStyle="None" />
+                                                                                <BorderBottom BorderStyle="Solid" BorderWidth="1px" BorderColor="#DCDCDC" />
+                                                                                <ClientSideEvents SelectedIndexChanged="OnListBoxSelectionChangedOfi" />
+                                                                            </dx:ASPxListBox>
+                                                                            <table style="width: 100%">
+                                                                            <tr>
+                                                                                <td style="padding: 4px">
+                                                                                    <dx:ASPxButton ID="ASPxButtonGR" Theme="MetropolisBlue" AutoPostBack="False" runat="server" Text="Aceptar" style="float: right">
+                                                                                        <ClientSideEvents Click="function(s, e){ checkComboBoxOfi.HideDropDown(); }" />
+                                                                                    </dx:ASPxButton>
+                                                                                </td>
+                                                                            </tr>
+                                                                            </table>
+                                                                    </DropDownWindowTemplate>   
+                                                                    <ClientSideEvents TextChanged="SynchronizeListBoxValuesOfi" DropDown="SynchronizeListBoxValuesOfi" />  
+                                                                </dx:ASPxDropDownEdit></td>
+                        <td>&nbsp;</td>
+                        <td>
+                            <dx:ASPxButton ID="btnx_filtrar" runat="server" Text="Aplicar Pre-Filtros" Theme="MetropolisBlue" Width="140px">
+                            </dx:ASPxButton>
+                        </td>
+                    </tr>
+                </table>
+            </dx:PanelContent>
+        </PanelCollection>
+    </dx:ASPxRoundPanel>
+                </dx:PanelContent>
+</PanelCollection>
+</dx:ASPxRoundPanel>
+
+                                    </dx:PanelContent>
+                                </PanelCollection>
+                            </dx:ASPxCallbackPanel>
+
+
+<dx:ASPxRoundPanel ID="rdpx_grid" runat="server" ShowHeader="False" Theme="MetropolisBlue" Width="100%">
+            <PanelCollection>
+<dx:PanelContent runat="server">
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <table style="width:100%;">
+                    <tr>
+                        <td style="width:25%">
+                            <dx:ASPxLabel ID="lblx_textovol" runat="server" style="font-weight: 700" Text="Cantidad Tx Actual:">
+                            </dx:ASPxLabel>
+                            <dx:ASPxLabel ID="lblx_volumenTx" runat="server">
+                            </dx:ASPxLabel>
+                        </td>
+                        <td>&nbsp;</td>
+                        <td style="width:25%">
+                            <dx:ASPxLabel ID="lblx_textovol0" runat="server" style="font-weight: 700" Text="Cantidad Tx Configurado:">
+                            </dx:ASPxLabel>
+                            <dx:ASPxLabel ID="lblx_volumenTxConfig" runat="server">
+                            </dx:ASPxLabel>
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td class="auto-style3">&nbsp;</td>
+                        <td class="auto-style1">&nbsp;</td>
+                        <td>
+                            <dx:ASPxButton ID="btnx_expxls" runat="server" Text="Excel" Theme="MetropolisBlue" Visible="False" Width="90px">
+                                <Image Url="~/App_Themes/Default/img/page/save.png">
+                                </Image>
+                            </dx:ASPxButton>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dx:ASPxPivotGrid ID="pvgx_datos" runat="server" ClientIDMode="AutoID" ClientInstanceName="pivotgrid" DataSourceID="SqlDataGridView" OnFieldValueDisplayText="pvgx_datos_FieldValueDisplayText" Theme="Aqua" Width="99%" EnableTheming="True">
+                    <Fields>
+                        <dx:PivotGridField ID="fieldProducto" Area="RowArea" AreaIndex="0" Caption="Año" FieldName="AÑO">
+                        </dx:PivotGridField>
+                        <dx:PivotGridField ID="fieldMes" AreaIndex="0" Caption="Mes" FieldName="MES">
+                        </dx:PivotGridField>
+                        <dx:PivotGridField ID="fieldDia" AreaIndex="1" Caption="Día" FieldName="DIA">
+                        </dx:PivotGridField>
+                        <dx:PivotGridField ID="fieldTipo" AreaIndex="2" Caption="Franja Horaria" FieldName="FRANJA">
+                        </dx:PivotGridField>
+                        <dx:PivotGridField ID="fieldSegmento" AreaIndex="3" Caption="Segmento" FieldName="SEGMENTO">
+                        </dx:PivotGridField>
+                        <dx:PivotGridField ID="fieldGrupo" AreaIndex="4" Caption="Grupo Transaccional" FieldName="GRUPO">
+                        </dx:PivotGridField>
+                        <dx:PivotGridField ID="fieldSubGrupo" AreaIndex="5" Caption="SubGrupo Transaccional" FieldName="SUBGRUPO">
+                        </dx:PivotGridField>
+                        <dx:PivotGridField ID="fieldDiaSemana" AreaIndex="6" Caption="Día Semana" FieldName="DIASEMANA">
+                        </dx:PivotGridField>
+                        <dx:PivotGridField ID="fieldOficina" AreaIndex="7" Caption="Oficina" FieldName="OFICINA" Visible="False">
+                        </dx:PivotGridField>
+                        <dx:PivotGridField ID="fieldCantidad" GroupIndex="0" Area="DataArea" AreaIndex="1" Caption="Cantidad Transacciónes" FieldName="TRANSACCIONES" Width="200" InnerGroupIndex="1">
+                        </dx:PivotGridField>
+                        <dx:PivotGridField ID="fieldDeuda" Area="DataArea" GroupIndex="1" AreaIndex="3" Caption="Cantidad Clientes" FieldName="CLIENTES" Width="200" InnerGroupIndex="1">
+                        </dx:PivotGridField>
+                        <dx:PivotGridField ID="fieldValor" Area="DataArea" GroupIndex="2" AreaIndex="5" Caption="Monto $" FieldName="VALOR" Width="200" CellFormat-FormatString="c0" ValueFormat-FormatString="c0" CellFormat-FormatType="Numeric" ValueFormat-FormatType="Numeric" InnerGroupIndex="1">
+                        </dx:PivotGridField>
+                        <dx:PivotGridField ID="PorcentajeCantidad" GroupIndex="0" Area="DataArea" UnboundType="Decimal" CellFormat-FormatString="p" CellFormat-FormatType="Numeric"  Visible="True" AreaIndex="0" Caption="%" UnboundFieldName="CampoCalculado" InnerGroupIndex="0">
+                        </dx:PivotGridField>
+                         <dx:PivotGridField ID="PorcentajeDeuda" GroupIndex="1" Area="DataArea" UnboundType="Decimal" CellFormat-FormatString="p" CellFormat-FormatType="Numeric"  Visible="True" AreaIndex="2" Caption="%" UnboundFieldName="CampoCalculado1" InnerGroupIndex="0">
+                        </dx:PivotGridField>
+                        <dx:PivotGridField ID="PorcentajeValor" GroupIndex="2" Area="DataArea" UnboundType="Decimal" CellFormat-FormatString="p" CellFormat-FormatType="Numeric"  Visible="True" AreaIndex="4" Caption="%" UnboundFieldName="CampoCalculado2" InnerGroupIndex="0">
+                        </dx:PivotGridField>
+                    </Fields>
+                     <Groups>
+                        <dx:PivotGridWebGroup Caption="fieldCantidad - PorcentajeCantidad" />
+                         <dx:PivotGridWebGroup Caption="fieldDeuda - PorcentajeDeuda" />
+                         <dx:PivotGridWebGroup Caption="fieldValor - PorcentajeValor" />
+                    </Groups>
+                    <OptionsView ShowHorizontalScrollBar="True" />
+                    <OptionsPager RowsPerPage="15">
+                    </OptionsPager>
+                    <OptionsFilter NativeCheckBoxes="False" />
+                </dx:ASPxPivotGrid>
+            </td>
+        </tr>
+    </table>
+
+                </dx:PanelContent>
+</PanelCollection>
+        </dx:ASPxRoundPanel>
+
+
+
+    </div>
+    <dx:ASPxHiddenField ID="Maximos" runat="server"></dx:ASPxHiddenField>
+    <asp:SqlDataSource ID="sds_Mes" runat="server" ConnectionString="<%$ ConnectionStrings:CNBD_INTERFA_WEB %>" SelectCommand="sp_consulta_Filtros_Tabla_Dinamica" SelectCommandType="StoredProcedure">
+            <SelectParameters >
+                <asp:Parameter Name="Bloque" DefaultValue="Mes" />
+                <asp:Parameter Name="Anho" DefaultValue="1900" />
+                <asp:Parameter Name="Canal" DefaultValue="14" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+
+        <dx:ASPxPivotGridExporter ID="pvex_datos" runat="server">
+        </dx:ASPxPivotGridExporter>
+
+        <asp:sqldatasource ID="SqlDataFiltrosFranja" runat="server"  ConnectionString="<%$ ConnectionStrings:CNBD_INTERFA_WEB %>" SelectCommandType="StoredProcedure" SelectCommand="sp_consulta_Filtros_Tabla_Dinamica"> 
+                <SelectParameters>
+                    <asp:Parameter Name="Bloque" DefaultValue="franja"/>
+                </SelectParameters>  
+     </asp:sqldatasource>
+            <asp:sqldatasource ID="SqlDataGridView" runat="server"    ConnectionString="<%$ ConnectionStrings:CNBD_INTERFA_WEB %>" 
+                SelectCommandType="StoredProcedure" SelectCommand="sp_consulta_Filtros_Tabla_Dinamica"> 
+                <SelectParameters>
+                    <asp:Parameter Name="Bloque" DefaultValue="pivot"/>
+                    <asp:Parameter Name="Anho"/>
+                    <asp:Parameter Name="Franja"/>
+                    <asp:Parameter Name="Segmento"/>
+                    <asp:Parameter Name="SubGrupo"/>
+                    <asp:Parameter Name="Oficina"/>
+                    <asp:Parameter Name="Canal"/>
+                </SelectParameters>  
+     </asp:sqldatasource>
+        <asp:sqldatasource ID="SqlDataFiltrosSegmento" runat="server"  ConnectionString="<%$ ConnectionStrings:CNBD_INTERFA_WEB %>" 
+                SelectCommandType="StoredProcedure" SelectCommand="sp_consulta_Filtros_Tabla_Dinamica"> 
+                <SelectParameters>
+                    <asp:Parameter Name="Bloque" DefaultValue="segmento"/>
+                </SelectParameters>  
+     </asp:sqldatasource>
+
+        <asp:sqldatasource ID="SqlDataFiltrosGrupo" runat="server"   ConnectionString="<%$ ConnectionStrings:CNBD_INTERFA_WEB %>" 
+                SelectCommandType="StoredProcedure" SelectCommand="sp_consulta_Filtros_Tabla_Dinamica"> 
+                <SelectParameters>
+                    <asp:Parameter Name="Bloque" DefaultValue="grupo"/>
+                </SelectParameters>  
+     </asp:sqldatasource>
+
+    <asp:sqldatasource ID="SqlDataFiltrosDia" runat="server"   ConnectionString="<%$ ConnectionStrings:CNBD_INTERFA_WEB %>" 
+                SelectCommandType="StoredProcedure" SelectCommand="sp_consulta_Filtros_Tabla_Dinamica"> 
+                <SelectParameters>
+                    <asp:Parameter Name="Bloque" DefaultValue="dia"/>
+                </SelectParameters>  
+     </asp:sqldatasource>
+
+    <asp:sqldatasource ID="SqlDataFiltrosOficina" runat="server" ConnectionString="<%$ ConnectionStrings:CNBD_INTERFA_WEB %>" 
+                SelectCommandType="StoredProcedure" SelectCommand="sp_consulta_Filtros_Tabla_Dinamica"> 
+                <SelectParameters>
+                    <asp:Parameter Name="Bloque" DefaultValue="oficina"/>
+                </SelectParameters>  
+     </asp:sqldatasource>
+
+        <dx:ASPxPopupControl 
+    ID="ASPxPopupControl2" 
+    runat="server" 
+    RenderMode="Lightweight" 
+    HeaderText="Mensaje de Sistema" 
+    Modal="True" 
+    ShowCloseButton="false"
+    CloseAction="OuterMouseClick"
+    Width="300px" 
+    PopupHorizontalAlign="WindowCenter" 
+    PopupVerticalAlign="WindowCenter" 
+    PopupAnimationType="Auto"
+    Border-BorderStyle="Outset" 
+    BackColor="White"
+    ClientInstanceName="Msge_Error" 
+    Font-Bold="True" 
+    Font-Names="Arial,Helvetica,sans-serif;" 
+    Font-Size="Medium" 
+    ForeColor="White"
+    ShowShadow="true" >
+    <HeaderStyle BackColor="Red" HorizontalAlign="Left" ForeColor="White"></HeaderStyle>
+                      
+            <ContentCollection>
+            <dx:PopupControlContentControl 
+                            ID="PopupControlContentControl12" 
+                            runat="server" 
+                            SupportsDisabledAttribute="True">
+                                <table border="0" cellpadding="0" cellspacing="0" style=" width:100%; height:100%">
+                                <tr>
+                                    <td>
+                                    <table border="0" cellpadding="0" cellspacing="0" style=" width:100%; height:100%">
+            <tr>
+                <td>
+                    <div class="popup_error">
+                                                                                            
+                    </div>
+                </td>
+                <td>&nbsp;&nbsp;</td>
+                <td style=" width:100%; vertical-align: top; text-align:left;"> 
+                        <table border="0" cellpadding="0" cellspacing="0" style=" width:100%; height:100%">
+                        <tr>
+                            <td>
+                                <dx:ASPxLabel ID="lblx_mensaje_titulo" runat="server" Font-Bold="True" ForeColor="Black" Text="Alerta:" Theme="MetropolisBlue">
+                                </dx:ASPxLabel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <dx:ASPxLabel ID="lblx_mensaje_error" runat="server" Theme="MetropolisBlue" ForeColor="Black">
+                                </dx:ASPxLabel>
+                            </td>
+                        </tr>
+                                                                                                
+                        </table>
+                </td>
+            </tr>
+        </table>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td style=" height:5px; width:100%;"></td>
+                    </tr>
+                    <tr>
+                    <td class="_index_login_error_td" style=" height:5px; width:100%;"></td>
+                    </tr>
+                    <tr>
+                        <td align="center" valign="top" style=" width:100%;" >
+            <dx:ASPxButton ID="ASPxButton3" runat="server" Text="OK" Width="80px" AutoPostBack="false" Theme="MetropolisBlue">
+            <ClientSideEvents Click="function(s, e) 
+                                                {
+	                                            Msge_Error.Hide();
+                                                }" />
+                    </dx:ASPxButton>
+                    </td>
+                    </tr>
+
+                </table>
+                </dx:PopupControlContentControl>
+            </ContentCollection>
+
+            <Border BorderStyle="Solid" BorderColor="Red"></Border>
+        </dx:ASPxPopupControl>
+    </form>
+</body>
+</html>

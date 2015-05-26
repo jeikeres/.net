@@ -1,0 +1,213 @@
+﻿.bg_Franjas_Color_Corporativo 
+{
+	background-color:#105dca;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: White;
+}
+.image_logo
+{
+    margin-left:50px;
+    margin-top:10px;
+    width:235px;
+    height:45px;
+    background-image:url(../img/slide/logo-blanco.png);
+    background-repeat:no-repeat;
+}
+
+.image_pattern
+{
+    position:absolute; 
+    top:0; 
+    left:0; 
+    bottom:0; 
+    z-index:81; 
+    right:0; 
+    width:100%; 
+    height:1000px; 
+    background-image: url('../img/slide/pattern1.png');
+}
+
+
+.popup_error
+{       
+    background-image: url(../Img/page/stop.png);
+    height:48px;
+    width:48px;
+}
+
+.popup_negrita
+{
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    color:#000000;
+    text-align:left;
+}
+
+.bg_Franjas_Color_Corporativo_2 
+{
+	background-color:#979797;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: White;
+}
+.bg_bar_gray{
+	background-image: url(../img/page/barrabg.png);
+	font-size: 8px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: Gray;
+	
+	}
+.Image_Informacion{
+	background-image: url(../img/page/notification.png);
+	height:32px;
+	width:32px;
+	}
+.Textos_Top_Banner
+{
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: Gray;
+}
+.bg_bar_blue{
+	background-image: url(../img/page/franjavino.png);
+	font-size: 12px;
+	font-family: Arial;
+	color: white;
+	font-weight:bold;
+		
+	}
+	
+	.bg_bar_blueleft{
+	background-image: url(../img/page/franbjaazulleft.png);
+	font-size: 12px;
+	font-family: Arial;
+	color: white;
+	font-weight:bold;
+	margin-right:inherit;
+		
+	}
+.bg_bar_blue2{
+	background-image: url(../img/page/franjavino.png);
+	font-size: 12px;
+	font-family: Arial;
+	color: white;
+	font-weight:bold;
+		
+	}
+.Textos_Parametros
+{
+    font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: Gray;
+    
+    }
+    .Textos_Panel_Indicadores
+{
+    font-size: 11px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: white;
+    
+    }
+ .lnk_div_green
+{
+    border: 0px;    
+    text-align: center;
+    font-weight:bold;
+   /* position:relative;*/
+    vertical-align:middle;
+    font-weight:bold;
+    top:20px;
+    bottom:4px;
+    right:23px;
+    left:5px;
+    width:95%;
+    height:100%;
+}
+.lnk_div
+{
+    width:95%;
+    height:100%;
+    border: 0px;    
+    /*position:relative;*/
+    vertical-align:middle;
+    text-align: center;
+    float:left;
+    font-weight:bold;
+    
+}
+.lnk_div_2
+{
+    width:95%;
+    height:100%;
+    border: 1px;    
+    border-color:Black;
+    position:relative;
+    vertical-align:middle;
+    text-align: center;
+    float:left;
+    font-weight:bold;
+    
+}
+.lnk_blanco
+{
+    color: #FFFFFF;
+
+}
+.lnk_cerrar
+{
+    color: #FFFFFF;
+    background-image:url("../img/treeview/close.png");
+    background-repeat:no-repeat;
+    background-position:left;
+    text-decoration:none;
+}
+.lnk_negro_
+{
+    color: #8e9391;
+
+}
+.lnk_notificacion
+{
+   /* position:relative;*/
+    vertical-align:middle;
+    font-weight:bold;
+    bottom:4px;
+    right:0px;
+    z-index:2;
+    width:20px;
+    height:20px;
+    background-image: url(../Img/page/notificacion.png);
+}
+.dpeqegrid
+{
+	border-style: none;
+    border-color: inherit;
+    border-width: 0px;
+    float: none;
+	width: 100%; 
+	height: 100%;
+	overflow: auto;
+	
+}
+.dpeqegrid2
+{
+	border-style: none;
+    border-color: inherit;
+    border-width: 0px;
+    float: none;
+	width: 100%; 
+	height: 450px;
+	overflow: scroll;
+	
+}
+.contenidodatos
+{
+	height: 500px; /*ver como se comporta*/
+	width: 100%;
+	border: solid 1px #cccccc;
+	background: transparent;
+	margin-left:2%;
+}

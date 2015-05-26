@@ -1,0 +1,868 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{1B0F5334-EC7E-4B33-AD54-14623555CD29}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Web</RootNamespace>
+    <AssemblyName>Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>Web.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>Web.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxGauges.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxPivotGrid.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.ASPxTreeList.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Web.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v14.2.Web, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v14.2.Presets, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Default\img\grid\add_black.png" />
+    <Content Include="App_Themes\Default\img\grid\cancel_black.png" />
+    <Content Include="App_Themes\Default\img\grid\delete_black.png" />
+    <Content Include="App_Themes\Default\img\grid\edit_black.png" />
+    <Content Include="App_Themes\Default\img\grid\guardar_black.png" />
+    <Content Include="App_Themes\Default\img\page\error.png" />
+    <Content Include="App_Themes\Default\img\page\stop.png" />
+    <Content Include="App_Themes\Default\img\treeview\documento_carpeta.png" />
+    <Content Include="App_Themes\Default\js\ddex.js" />
+    <Content Include="App_Themes\Default\css\StyleSheet.css" />
+    <Content Include="App_Themes\Default\img\grid\cancel.png" />
+    <Content Include="App_Themes\Default\img\grid\cancel_32.png" />
+    <Content Include="App_Themes\Default\img\grid\editar.png" />
+    <Content Include="App_Themes\Default\img\grid\eliminar.png" />
+    <Content Include="App_Themes\Default\img\grid\nuevo.png" />
+    <Content Include="App_Themes\Default\img\grid\ok.png" />
+    <Content Include="App_Themes\Default\img\grid\ok_32.png" />
+    <Content Include="App_Themes\Default\img\page\barrabg.png" />
+    <Content Include="App_Themes\Default\img\page\btn_detalle.png" />
+    <Content Include="App_Themes\Default\img\page\BTN_ROJO.png" />
+    <Content Include="App_Themes\Default\img\page\BTN_VERDE.png" />
+    <Content Include="App_Themes\Default\img\page\detail.png" />
+    <Content Include="App_Themes\Default\img\page\estado_error.png" />
+    <Content Include="App_Themes\Default\img\page\estado_ok.png" />
+    <Content Include="App_Themes\Default\img\page\franbjavino.PNG" />
+    <Content Include="App_Themes\Default\img\page\franbjavino2.PNG" />
+    <Content Include="App_Themes\Default\img\page\franjaverde.png" />
+    <Content Include="App_Themes\Default\img\page\franjaverdeleft.png" />
+    <Content Include="App_Themes\Default\img\page\franjavino.png" />
+    <Content Include="App_Themes\Default\img\page\franjavino2.png" />
+    <Content Include="App_Themes\Default\img\page\franjavinoleft.png" />
+    <Content Include="App_Themes\Default\img\page\franjavinoleft2 .png" />
+    <Content Include="App_Themes\Default\img\page\help_btn.png" />
+    <Content Include="App_Themes\Default\img\page\help_info.png" />
+    <Content Include="App_Themes\Default\img\page\index.png" />
+    <Content Include="App_Themes\Default\img\page\logo_small.png" />
+    <Content Include="App_Themes\Default\img\page\notificacion - copia.png" />
+    <Content Include="App_Themes\Default\img\page\notificacion.png" />
+    <Content Include="App_Themes\Default\img\page\notification - copia.png" />
+    <Content Include="App_Themes\Default\img\page\notification.png" />
+    <Content Include="App_Themes\Default\img\page\save.png" />
+    <Content Include="App_Themes\Default\img\page\usuarios_conectados.png" />
+    <Content Include="App_Themes\Default\img\slide\logo-blanco.png" />
+    <Content Include="App_Themes\Default\img\slide\pattern1.png" />
+    <Content Include="App_Themes\Default\img\slide\slide01 - copia %282%29.jpg" />
+    <Content Include="App_Themes\Default\img\slide\slide01 - copia.jpg" />
+    <Content Include="App_Themes\Default\img\slide\slide01.jpg" />
+    <Content Include="App_Themes\Default\img\slide\slide02 - copia %282%29.jpg" />
+    <Content Include="App_Themes\Default\img\slide\slide02 - copia.jpg" />
+    <Content Include="App_Themes\Default\img\slide\slide02.jpg" />
+    <Content Include="App_Themes\Default\img\slide\slide03 - copia %282%29.jpg" />
+    <Content Include="App_Themes\Default\img\slide\slide03 - copia.jpg" />
+    <Content Include="App_Themes\Default\img\slide\slide03.jpg" />
+    <Content Include="App_Themes\Default\img\treeview\admnistrator.png" />
+    <Content Include="App_Themes\Default\img\treeview\chart_bar.png" />
+    <Content Include="App_Themes\Default\img\treeview\close.png" />
+    <Content Include="App_Themes\Default\img\treeview\home.png" />
+    <Content Include="App_Themes\Default\img\treeview\home_.png" />
+    <Content Include="App_Themes\Default\img\treeview\mini_circle_brown.png" />
+    <Content Include="App_Themes\Default\img\treeview\semaforo.png" />
+    <Content Include="App_Themes\Default\img\treeview\top_item.png" />
+    <Content Include="Cerrar.aspx" />
+    <Content Include="Error.aspx" />
+    <Content Include="Error.html" />
+    <Content Include="Global.asax" />
+    <Content Include="index.aspx" />
+    <Content Include="Informes\CanFis\ATM\COMP.aspx" />
+    <Content Include="Informes\CanFis\ATM\TD.aspx" />
+    <Content Include="Informes\CanFis\ATM\TEND.aspx" />
+    <Content Include="Informes\CanFis\Multiservicio\COMP.aspx" />
+    <Content Include="Informes\CanFis\Multiservicio\TD.aspx" />
+    <Content Include="Informes\CanFis\Multiservicio\TEND.aspx" />
+    <Content Include="Informes\CanFis\Oficinas\COMP.aspx" />
+    <Content Include="Informes\CanFis\Oficinas\TD.aspx" />
+    <Content Include="Informes\CanFis\Oficinas\TEND.aspx" />
+    <Content Include="Informes\CanFis\Oficinas\TransOfxGrupo.aspx" />
+    <Content Include="Informes\CanFis\Oficinas\TransOfxGrupoRet.aspx" />
+    <Content Include="Informes\CanFis\Oficinas\TransOfxHora.aspx" />
+    <Content Include="Informes\CanFis\Oficinas\TransOfxUsuario.aspx" />
+    <Content Include="Informes\CanFis\Oficinas\WebForm1.aspx" />
+    <Content Include="Informes\CanFis\PuntoAgil\COMP.aspx" />
+    <Content Include="Informes\CanFis\PuntoAgil\TD.aspx" />
+    <Content Include="Informes\CanFis\PuntoAgil\TEND.aspx" />
+    <Content Include="Informes\CanOtros\ATMOR\COMP.aspx" />
+    <Content Include="Informes\CanOtros\ATMOR\TD.aspx" />
+    <Content Include="Informes\CanOtros\ATMOR\TEND.aspx" />
+    <Content Include="Informes\CanOtros\CorresponsalBancario\COMP.aspx" />
+    <Content Include="Informes\CanOtros\CorresponsalBancario\TD.aspx" />
+    <Content Include="Informes\CanOtros\CorresponsalBancario\TEND.aspx" />
+    <Content Include="Informes\CanOtros\DebitoAutomatico\COMP.aspx" />
+    <Content Include="Informes\CanOtros\DebitoAutomatico\TD.aspx" />
+    <Content Include="Informes\CanOtros\DebitoAutomatico\TEND.aspx" />
+    <Content Include="Informes\CanOtros\POS\COMP.aspx" />
+    <Content Include="Informes\CanOtros\POS\TD.aspx" />
+    <Content Include="Informes\CanOtros\POS\TEND.aspx" />
+    <Content Include="Informes\CanVir\App\COMP.aspx" />
+    <Content Include="Informes\CanVir\App\TD.aspx" />
+    <Content Include="Informes\CanVir\App\TEND.aspx" />
+    <Content Include="Informes\CanVir\BancaMovil\COMP.aspx" />
+    <Content Include="Informes\CanVir\BancaMovil\TD.aspx" />
+    <Content Include="Informes\CanVir\BancaMovil\TEND.aspx" />
+    <Content Include="Informes\CanVir\DvCom\COMP.aspx" />
+    <Content Include="Informes\CanVir\DvCom\TEND.aspx" />
+    <Content Include="Informes\CanVir\DvCom\TD.aspx" />
+    <Content Include="Informes\CanVir\TelRojo\COMP.aspx" />
+    <Content Include="Informes\CanVir\TelRojo\TD.aspx" />
+    <Content Include="Informes\CanVir\TelRojo\TEND.aspx" />
+    <Content Include="Informes\Informe1.aspx" />
+    <Content Include="Informes\MultiCan\Composicion_Segmento_TipoTx.aspx" />
+    <Content Include="Informes\MultiCan\TipoTx_Segmento3D.aspx" />
+    <Content Include="Informes\MultiCan\Evolucion_TipoTx_Segmento.aspx" />
+    <Content Include="Informes\MultiCan\Transacciones_Canal.aspx" />
+    <Content Include="Informes\MultiCan\Segmento_TipoTx.aspx" />
+    <Content Include="Informes\MultiCan\TipoTx_Segmento.aspx" />
+    <Content Include="Inicio.aspx" />
+    <Content Include="Manage\Autenticacion\CambiarClave.aspx" />
+    <Content Include="Manage\Autenticacion\CambiarClaveMenu.aspx" />
+    <Content Include="Manage\Autenticacion\ClaveNueva.aspx" />
+    <Content Include="Manage\Autenticacion\EstablecerRespuestas.aspx" />
+    <Content Include="Manage\Autenticacion\EstablecerRespuestasMenu.aspx" />
+    <Content Include="Manage\Logs\LogAplicacion.aspx" />
+    <Content Include="Manage\Logs\LogUsuario.aspx" />
+    <Content Include="Manage\Mantencion\Mantenedor_Asignacion_Perfiles.aspx" />
+    <Content Include="Manage\Mantencion\Mantenedor_Asignacion_Opciones.aspx" />
+    <Content Include="Manage\Mantencion\Mantenedor_Configuraciones_seguridad.aspx" />
+    <Content Include="Manage\Mantencion\Mantenedor_Funcion_Opcion.aspx" />
+    <Content Include="Manage\Mantencion\Mantenedor_Menu.aspx" />
+    <Content Include="Manage\Mantencion\Mantenedor_Perfiles.aspx" />
+    <Content Include="Manage\Autenticacion\RecuperarClaveIngresoRespuestas.aspx" />
+    <Content Include="Manage\Autenticacion\RecuperarClaveIngresoUser.aspx" />
+    <Content Include="Manage\Autenticacion\ReporteUsuariosGeneral.aspx" />
+    <Content Include="Manage\Autenticacion\SesionIniciada.aspx" />
+    <Content Include="Manage\Mantencion\Mantenedor_Usuario.aspx" />
+    <Content Include="PanelControl.aspx" />
+    <Content Include="Principal.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Code\Objetos.vb" />
+    <Compile Include="Cerrar.aspx.designer.vb">
+      <DependentUpon>Cerrar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cerrar.aspx.vb">
+      <DependentUpon>Cerrar.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="App_Code\CustomLocalizer.vb" />
+    <Compile Include="Error.aspx.designer.vb">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.vb">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.designer.vb">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.vb">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\ATM\COMP.aspx.designer.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\ATM\COMP.aspx.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\ATM\TD.aspx.designer.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\ATM\TD.aspx.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\ATM\TEND.aspx.designer.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\ATM\TEND.aspx.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\Multiservicio\COMP.aspx.designer.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\Multiservicio\COMP.aspx.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\Multiservicio\TD.aspx.designer.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\Multiservicio\TD.aspx.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\Multiservicio\TEND.aspx.designer.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\Multiservicio\TEND.aspx.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\COMP.aspx.designer.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\COMP.aspx.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\TD.aspx.designer.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\TD.aspx.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\TEND.aspx.designer.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\TEND.aspx.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\TransOfxGrupo.aspx.designer.vb">
+      <DependentUpon>TransOfxGrupo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\TransOfxGrupo.aspx.vb">
+      <DependentUpon>TransOfxGrupo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\TransOfxGrupoRet.aspx.designer.vb">
+      <DependentUpon>TransOfxGrupoRet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\TransOfxGrupoRet.aspx.vb">
+      <DependentUpon>TransOfxGrupoRet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\TransOfxHora.aspx.designer.vb">
+      <DependentUpon>TransOfxHora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\TransOfxHora.aspx.vb">
+      <DependentUpon>TransOfxHora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\TransOfxUsuario.aspx.designer.vb">
+      <DependentUpon>TransOfxUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\TransOfxUsuario.aspx.vb">
+      <DependentUpon>TransOfxUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\WebForm1.aspx.designer.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\Oficinas\WebForm1.aspx.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\PuntoAgil\COMP.aspx.designer.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\PuntoAgil\COMP.aspx.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\PuntoAgil\TD.aspx.designer.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\PuntoAgil\TD.aspx.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanFis\PuntoAgil\TEND.aspx.designer.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanFis\PuntoAgil\TEND.aspx.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanOtros\ATMOR\COMP.aspx.designer.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanOtros\ATMOR\COMP.aspx.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanOtros\ATMOR\TD.aspx.designer.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanOtros\ATMOR\TD.aspx.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanOtros\ATMOR\TEND.aspx.designer.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanOtros\ATMOR\TEND.aspx.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanOtros\CorresponsalBancario\COMP.aspx.designer.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanOtros\CorresponsalBancario\COMP.aspx.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanOtros\CorresponsalBancario\TD.aspx.designer.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanOtros\CorresponsalBancario\TD.aspx.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanOtros\CorresponsalBancario\TEND.aspx.designer.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanOtros\CorresponsalBancario\TEND.aspx.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanOtros\DebitoAutomatico\COMP.aspx.designer.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanOtros\DebitoAutomatico\COMP.aspx.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanOtros\DebitoAutomatico\TD.aspx.designer.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanOtros\DebitoAutomatico\TD.aspx.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanOtros\DebitoAutomatico\TEND.aspx.designer.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanOtros\DebitoAutomatico\TEND.aspx.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanOtros\POS\COMP.aspx.designer.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanOtros\POS\COMP.aspx.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanOtros\POS\TD.aspx.designer.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanOtros\POS\TD.aspx.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanOtros\POS\TEND.aspx.designer.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanOtros\POS\TEND.aspx.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanVir\App\COMP.aspx.designer.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanVir\App\COMP.aspx.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanVir\App\TD.aspx.designer.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanVir\App\TD.aspx.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanVir\App\TEND.aspx.designer.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanVir\App\TEND.aspx.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanVir\BancaMovil\COMP.aspx.designer.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanVir\BancaMovil\COMP.aspx.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanVir\BancaMovil\TD.aspx.designer.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanVir\BancaMovil\TD.aspx.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanVir\BancaMovil\TEND.aspx.designer.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanVir\BancaMovil\TEND.aspx.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanVir\DvCom\COMP.aspx.designer.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanVir\DvCom\COMP.aspx.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanVir\DvCom\TEND.aspx.designer.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanVir\DvCom\TEND.aspx.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanVir\DvCom\TD.aspx.designer.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanVir\DvCom\TD.aspx.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanVir\TelRojo\COMP.aspx.designer.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanVir\TelRojo\COMP.aspx.vb">
+      <DependentUpon>COMP.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanVir\TelRojo\TD.aspx.designer.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanVir\TelRojo\TD.aspx.vb">
+      <DependentUpon>TD.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\CanVir\TelRojo\TEND.aspx.designer.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\CanVir\TelRojo\TEND.aspx.vb">
+      <DependentUpon>TEND.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\Informe1.aspx.designer.vb">
+      <DependentUpon>Informe1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\Informe1.aspx.vb">
+      <DependentUpon>Informe1.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Informes\MultiCan\Composicion_Segmento_TipoTx.aspx.designer.vb">
+      <DependentUpon>Composicion_Segmento_TipoTx.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\MultiCan\Composicion_Segmento_TipoTx.aspx.vb">
+      <DependentUpon>Composicion_Segmento_TipoTx.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\MultiCan\TipoTx_Segmento3D.aspx.designer.vb">
+      <DependentUpon>TipoTx_Segmento3D.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\MultiCan\TipoTx_Segmento3D.aspx.vb">
+      <DependentUpon>TipoTx_Segmento3D.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\MultiCan\Evolucion_TipoTx_Segmento.aspx.designer.vb">
+      <DependentUpon>Evolucion_TipoTx_Segmento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\MultiCan\Evolucion_TipoTx_Segmento.aspx.vb">
+      <DependentUpon>Evolucion_TipoTx_Segmento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\MultiCan\Transacciones_Canal.aspx.designer.vb">
+      <DependentUpon>Transacciones_Canal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\MultiCan\Transacciones_Canal.aspx.vb">
+      <DependentUpon>Transacciones_Canal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\MultiCan\Segmento_TipoTx.aspx.designer.vb">
+      <DependentUpon>Segmento_TipoTx.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\MultiCan\Segmento_TipoTx.aspx.vb">
+      <DependentUpon>Segmento_TipoTx.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informes\MultiCan\TipoTx_Segmento.aspx.designer.vb">
+      <DependentUpon>TipoTx_Segmento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informes\MultiCan\TipoTx_Segmento.aspx.vb">
+      <DependentUpon>TipoTx_Segmento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inicio.aspx.designer.vb">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio.aspx.vb">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\CambiarClave.aspx.designer.vb">
+      <DependentUpon>CambiarClave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\CambiarClave.aspx.vb">
+      <DependentUpon>CambiarClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\CambiarClaveMenu.aspx.designer.vb">
+      <DependentUpon>CambiarClaveMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\CambiarClaveMenu.aspx.vb">
+      <DependentUpon>CambiarClaveMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\ClaveNueva.aspx.designer.vb">
+      <DependentUpon>ClaveNueva.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\ClaveNueva.aspx.vb">
+      <DependentUpon>ClaveNueva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\EstablecerRespuestas.aspx.designer.vb">
+      <DependentUpon>EstablecerRespuestas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\EstablecerRespuestas.aspx.vb">
+      <DependentUpon>EstablecerRespuestas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\EstablecerRespuestasMenu.aspx.designer.vb">
+      <DependentUpon>EstablecerRespuestasMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\EstablecerRespuestasMenu.aspx.vb">
+      <DependentUpon>EstablecerRespuestasMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Logs\LogAplicacion.aspx.designer.vb">
+      <DependentUpon>LogAplicacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Logs\LogAplicacion.aspx.vb">
+      <DependentUpon>LogAplicacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Logs\LogUsuario.aspx.designer.vb">
+      <DependentUpon>LogUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Logs\LogUsuario.aspx.vb">
+      <DependentUpon>LogUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Mantencion\Mantenedor_Asignacion_Perfiles.aspx.designer.vb">
+      <DependentUpon>Mantenedor_Asignacion_Perfiles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Mantencion\Mantenedor_Asignacion_Perfiles.aspx.vb">
+      <DependentUpon>Mantenedor_Asignacion_Perfiles.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Mantencion\Mantenedor_Asignacion_Opciones.aspx.designer.vb">
+      <DependentUpon>Mantenedor_Asignacion_Opciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Mantencion\Mantenedor_Asignacion_Opciones.aspx.vb">
+      <DependentUpon>Mantenedor_Asignacion_Opciones.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Mantencion\Mantenedor_Configuraciones_seguridad.aspx.designer.vb">
+      <DependentUpon>Mantenedor_Configuraciones_seguridad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Mantencion\Mantenedor_Configuraciones_seguridad.aspx.vb">
+      <DependentUpon>Mantenedor_Configuraciones_seguridad.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Mantencion\Mantenedor_Funcion_Opcion.aspx.designer.vb">
+      <DependentUpon>Mantenedor_Funcion_Opcion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Mantencion\Mantenedor_Funcion_Opcion.aspx.vb">
+      <DependentUpon>Mantenedor_Funcion_Opcion.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Mantencion\Mantenedor_Menu.aspx.designer.vb">
+      <DependentUpon>Mantenedor_Menu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Mantencion\Mantenedor_Menu.aspx.vb">
+      <DependentUpon>Mantenedor_Menu.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Mantencion\Mantenedor_Perfiles.aspx.designer.vb">
+      <DependentUpon>Mantenedor_Perfiles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Mantencion\Mantenedor_Perfiles.aspx.vb">
+      <DependentUpon>Mantenedor_Perfiles.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\RecuperarClaveIngresoRespuestas.aspx.designer.vb">
+      <DependentUpon>RecuperarClaveIngresoRespuestas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\RecuperarClaveIngresoRespuestas.aspx.vb">
+      <DependentUpon>RecuperarClaveIngresoRespuestas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\RecuperarClaveIngresoUser.aspx.designer.vb">
+      <DependentUpon>RecuperarClaveIngresoUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\RecuperarClaveIngresoUser.aspx.vb">
+      <DependentUpon>RecuperarClaveIngresoUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\ReporteUsuariosGeneral.aspx.designer.vb">
+      <DependentUpon>ReporteUsuariosGeneral.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\ReporteUsuariosGeneral.aspx.vb">
+      <DependentUpon>ReporteUsuariosGeneral.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\SesionIniciada.aspx.designer.vb">
+      <DependentUpon>SesionIniciada.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Autenticacion\SesionIniciada.aspx.vb">
+      <DependentUpon>SesionIniciada.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manage\Mantencion\Mantenedor_Usuario.aspx.designer.vb">
+      <DependentUpon>Mantenedor_Usuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manage\Mantencion\Mantenedor_Usuario.aspx.vb">
+      <DependentUpon>Mantenedor_Usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterMenu.Master.designer.vb">
+      <DependentUpon>MasterMenu.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterMenu.Master.vb">
+      <DependentUpon>MasterMenu.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterSlide.Master.designer.vb">
+      <DependentUpon>MasterSlide.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterSlide.Master.vb">
+      <DependentUpon>MasterSlide.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\MyExtensions\MyWebExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.Web.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="App_Code\OrdenamientoxComparacion.vb" />
+    <Compile Include="PanelControl.aspx.designer.vb">
+      <DependentUpon>PanelControl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PanelControl.aspx.vb">
+      <DependentUpon>PanelControl.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Principal.aspx.designer.vb">
+      <DependentUpon>Principal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.aspx.vb">
+      <DependentUpon>Principal.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterSlide.Master" />
+    <Content Include="App_Themes\Default\img\page\cornerleft.psd" />
+    <Content Include="MasterMenu.Master" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Negocio\Negocio.vbproj">
+      <Project>{600c953f-d625-49d8-a6d6-f4a9a695329e}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51712</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58303/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

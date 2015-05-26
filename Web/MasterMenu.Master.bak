@@ -1,0 +1,205 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="MasterMenu.master.vb" Inherits="Web.MasterMenu" %>
+<%@ Register Assembly="DevExpress.Web.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.Linear" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.Circular" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.State" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.Digital" tagprefix="dx" %>
+
+
+
+<%@ Register assembly="DevExpress.Data.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Utils" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.XtraGauges.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraGauges.Base" tagprefix="dx" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+      <link href="App_Themes/Default/css/StyleSheet.css" rel="Stylesheet" type="text/css" />
+     <script type="text/javascript">
+         function OnNodeClick(s, e)
+         {
+
+             //var url = splitter.GetPaneByName('pane2').GetContentUrl();
+             //alert(url);
+             splitter.GetPaneByName("pane2").SetContentUrl(e.node.name);
+            
+
+         }
+
+         //-->
+
+</script>
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+            height: 104px;
+        }
+        .style2
+        {
+            width: 100%;
+            height:100%;
+        }
+        </style>
+</head>
+<body style="margin-left:0px; margin-right:0; margin-top:0px;">
+    <form id="Master_Page" runat="server">
+        <div style="background:rgba(0, 0, 0, 0.8); width:100%; height:28px; z-index:99; position:absolute; bottom:0px; left:0px; vertical-align:middle;"></div>
+    <div style="background-color:transparent; width:100%; height:20px; z-index:99; position:absolute; bottom:0px; left:0px; vertical-align:middle;">
+         <span style="font-family: 'BebasNeueRegular', sans-serif; font-size: 12px; font-weight:bold; margin-left:50px; color: #909090; ">© GESTRAN S.A. - SANTIAGO DE CHILE</span> 
+    </div>
+    <div>
+        <dx:ASPxDockManager ID="ASPxDockManager1" runat="server">
+        </dx:ASPxDockManager>
+        <table class="style1" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td>
+                    <table class="style2" cellpadding="0" cellspacing="0" >
+                        <tr>
+                            <td class="bg_bar_blue2" >
+                                
+                                <dx:ASPxCallbackPanel ID="cbp_banner_superior" runat="server" Width="100%" 
+                                    ClientInstanceName="Banner_Superior" >
+                                    <PanelCollection>
+<dx:PanelContent ID="PanelContent1" runat="server" SupportsDisabledAttribute="True">
+    <table class="style2">
+        <tr>
+            <td  rowspan="2" style="margin-left:50px; width:25%">
+            <div class="image_logo"></div>
+                &nbsp;</td>
+            <td rowspan="2"style="width:55%; text-align:center;">
+                <table cellpadding="0" align="center" cellspacing="0">
+                    <tr>
+                        <td>
+                            <dx:ASPxLabel ID="lblx_titulo_sistema" runat="server" 
+                                EnableDefaultAppearance="False" style="font-size: x-large" Font-Size="24px" >
+                                <Border BorderColor="#993020" />
+                            </dx:ASPxLabel>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="text-align:right; vertical-align:top;">
+              
+                <table width="100%">
+                    <tr>
+                        <td style="text-align:right;">
+                        
+                            <table border="0" style="width:100%;">
+                                <tr>
+                                    <td style="vertical-align:top; ">
+                                        <dx:ASPxLabel ID="lblx_bienvenido" runat="server">
+                                        </dx:ASPxLabel>
+                                    </td>
+                                    <td style="vertical-align:top; ">
+                                        <dx:ASPxLabel ID="lblx_nombre_usuario" runat="server">
+                                        </dx:ASPxLabel>
+                                    </td>
+                                </tr>
+                            </table>
+                        
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; vertical-align:top;">
+              <table style="width:100%;">
+                    <tr>
+                        <td style="width:40%">
+                            
+
+                            
+                        </td>
+                        <td style="text-align: right">
+                            <asp:LinkButton ID="lnk_cerrar" runat="server" CssClass="lnk_cerrar" Width="120px"></asp:LinkButton>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+                                        </dx:PanelContent>
+</PanelCollection>
+                                </dx:ASPxCallbackPanel>
+                                
+                            </td>
+                        </tr>
+                        </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                     <dx:ASPxSplitter ID="ASPxSplitter1" runat="server" 
+                         ClientInstanceName="splitter" ShowCollapseBackwardButton="True" 
+                         ShowCollapseForwardButton="True" Height="550px" SeparatorSize="10px" 
+                         Theme="Aqua">
+            <Panes>
+                <dx:SplitterPane Size="230px" ScrollBars="Vertical">
+                    <ContentCollection>
+                        <dx:SplitterContentControl ID="SplitterContentControl1" runat="server" SupportsDisabledAttribute="True" >
+                        
+                            <table class="style2">
+                                <tr>
+                                    <td valign="top">
+                                        <dx:ASPxCallbackPanel ID="cbp_menu" runat="server" Width="300px" 
+                                            ClientInstanceName = "Menu_Arbol">
+                                            <PanelCollection>
+                                                <dx:PanelContent ID="PanelContent2" runat="server" SupportsDisabledAttribute="True">
+                                                    <dx:ASPxTreeView ID="trvx_arbol" runat="server" Theme="MetropolisBlue" 
+                                                        Width="250px">
+                                                        <ClientSideEvents NodeClick="OnNodeClick" />
+                                                    </dx:ASPxTreeView>
+                                                </dx:PanelContent>
+                                            </PanelCollection>
+                                        </dx:ASPxCallbackPanel>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="bottom">
+                                        &nbsp;</td>
+                                </tr>
+                            </table>
+                        </dx:SplitterContentControl>
+                    </ContentCollection>
+                </dx:SplitterPane>
+                <dx:SplitterPane ContentUrl="inicio.aspx" Name="pane2" ScrollBars="Auto">
+                    <ContentCollection>
+                        <dx:SplitterContentControl ID="SplitterContentControl2" runat="server" SupportsDisabledAttribute="True">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </dx:SplitterContentControl>
+                    </ContentCollection>
+                </dx:SplitterPane>
+            </Panes>
+        </dx:ASPxSplitter>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                     <dx:ASPxLabel ID="lbl_param_idusuario" runat="server" Visible="False">
+                     </dx:ASPxLabel>
+                     <asp:Label runat="server" ID="lbl_menu" Visible="False"></asp:Label>
+
+                </td>
+            </tr>
+        </table>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:Timer ID="Timer1" runat="server" Interval="1000"></asp:Timer>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <Triggers>
+              <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
+            </Triggers>
+        </asp:UpdatePanel>
+    </div>
+    </form>
+</body>
+</html>

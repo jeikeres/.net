@@ -1,0 +1,170 @@
+﻿Imports System.Data
+Imports DevExpress.Web
+Imports DevExpress.Web.TreeViewNodeCollection
+Imports DevExpress.Web.ASPxComboBox
+Imports DevExpress.Utils
+
+Public Class Objetos
+
+    Public Function EstableceMaximos(ByVal _Ds As DataSet, ByVal CODOpcion As String) As Integer
+
+        Dim objectos As DataTable = _Ds.Tables(1)
+        Dim Opcion As Integer = 0
+
+        Dim ObjetoQuery = From objeto In objectos.AsEnumerable() _
+                          Select objeto
+                          Where objeto.Field(Of String)("ABREV") = CODOpcion
+        For Each objeto In ObjetoQuery
+            Opcion = objeto.Field(Of String)("VALOR")
+        Next
+
+        Return Opcion
+
+    End Function
+
+    Public Function ActivaButtonsPermiso(ByVal _Ds As DataSet, ByVal CODOpcion As String) As Boolean
+
+        Dim objectos As DataTable = _Ds.Tables(0)
+        Dim Opcion As String = ""
+
+        Dim ObjetoQuery = From objeto In objectos.AsEnumerable() _
+                          Select objeto
+        Where objeto.Field(Of String)("COD_OPCION").Trim = CODOpcion
+
+
+
+        For Each objeto In ObjetoQuery
+            Opcion = objeto.Field(Of String)("COD_OPCION").Trim
+        Next
+
+        Return IIf(Opcion <> "", True, False)
+
+    End Function
+
+    Public Function CargaCombobox(ByRef _combobox As DevExpress.Web.ASPxComboBox, ByVal _Ds As DataSet) As DevExpress.Web.ASPxComboBox
+        Dim Predeterminado As Integer = 0
+
+        If _Ds.Tables.Count Then
+            For x As Integer = 0 To _Ds.Tables(0).Rows.Count - 1
+                _combobox.Items.Add(_Ds.Tables(0).Rows(x)(1))
+                _combobox.Items(x).Value = CInt(_Ds.Tables(0).Rows(x)(0))
+                If _Ds.Tables(0).Rows(x)(2) = "True" Then
+                    Predeterminado = x
+                End If
+            Next
+            _combobox.SelectedIndex = Predeterminado
+        End If
+        Return _combobox
+    End Function
+
+    Public Function CarhaHyperLink(ByRef Obj As DevExpress.Web.ASPxHyperLink, ByVal IDObjeto As String, ByVal _Ds As DataSet) As DevExpress.Web.ASPxHyperLink
+
+        Dim objectos As DataTable = _Ds.Tables(0)
+
+        Dim ObjetoQuery = From objeto In objectos.AsEnumerable() _
+                          Select objeto
+        Where objeto.Field(Of String)("ID_OBJETO") = IDObjeto
+
+        For Each objeto In ObjetoQuery
+            Obj.Text = objeto.Field(Of String)("CAMPO")
+            Obj.Width = CInt(objeto.Field(Of Integer)("ANCHO"))
+            'Label.Visible = objeto.Field(Of String)("ANCHO")
+        Next
+
+        Return Obj
+    End Function
+
+    Public Function CargaButton(ByRef Obj As DevExpress.Web.ASPxButton, ByVal IDObjeto As String, ByVal _Ds As DataSet) As DevExpress.Web.ASPxButton
+
+        Dim objectos As DataTable = _Ds.Tables(0)
+
+        Dim ObjetoQuery = From objeto In objectos.AsEnumerable() _
+                          Select objeto
+                          Where objeto.Field(Of String)("ID_OBJETO") = IDObjeto
+
+        For Each objeto In ObjetoQuery
+            Obj.Text = objeto.Field(Of String)("CAMPO")
+            Obj.Width = CInt(objeto.Field(Of Integer)("ANCHO"))
+            'Label.Visible = objeto.Field(Of String)("ANCHO")
+        Next
+
+        Return Obj
+    End Function
+
+    Public Function CargaLabel(ByRef Obj As DevExpress.Web.ASPxLabel, ByVal IDObjeto As String, ByVal _Ds As DataSet) As DevExpress.Web.ASPxLabel
+
+        Dim objectos As DataTable = _Ds.Tables(0)
+
+        Dim ObjetoQuery = From objeto In objectos.AsEnumerable() _
+                          Select objeto
+                          Where objeto.Field(Of String)("ID_OBJETO") = IDObjeto
+
+        For Each objeto In ObjetoQuery
+            Obj.Text = objeto.Field(Of String)("CAMPO")
+            Obj.Width = CInt(objeto.Field(Of Integer)("ANCHO"))
+        Next
+
+        Return Obj
+    End Function
+
+    Public Function CargaAspLinkButton(ByRef Obj As LinkButton, ByVal IDObjeto As String, ByVal _Ds As DataSet) As LinkButton
+
+        Dim objectos As DataTable = _Ds.Tables(0)
+
+        Dim ObjetoQuery = From objeto In objectos.AsEnumerable() _
+                          Select objeto
+                          Where objeto.Field(Of String)("ID_OBJETO") = IDObjeto
+
+        For Each objeto In ObjetoQuery
+            Obj.Text = objeto.Field(Of String)("CAMPO")
+            Obj.Width = CInt(objeto.Field(Of Integer)("ANCHO"))
+        Next
+
+        Return Obj
+    End Function
+
+    Public Function CargaMenu(ByRef Mn As DevExpress.Web.ASPxTreeView, ByVal table As DataTable) As DevExpress.Web.ASPxTreeView
+
+        Mn.Nodes.Clear()
+        CargaMenu(Mn.Nodes, table, "0")
+
+        Return Mn
+    End Function
+
+    Private Sub CargaMenu(ByRef nodesCollection As DevExpress.Web.TreeViewNodeCollection, ByVal table As DataTable, ByVal parentID As String)
+        For i As Integer = 0 To table.Rows.Count - 1
+            If table.Rows(i)("IDPadre").ToString() = parentID Then
+                Dim node As New DevExpress.Web.TreeViewNode
+                node.Text = table.Rows(i)("NOMBRE").ToString()
+                node.Name = table.Rows(i)("URL").ToString()
+                node.ToolTip = table.Rows(i)("NOMBRE").ToString()
+                node.Image.Url = Trim(table.Rows(i)("IMAGEN").ToString())
+                nodesCollection.Add(node)
+                CargaMenu(node.Nodes, table, table.Rows(i)("ID").ToString())
+            End If
+        Next i
+    End Sub
+
+    Public Function CargaPivot(ByRef Pv As DevExpress.Web.ASPxPivotGrid.ASPxPivotGrid, ByVal DS As DataSet) As DevExpress.Web.ASPxPivotGrid.ASPxPivotGrid
+
+        Dim field As DevExpress.Web.ASPxPivotGrid.PivotGridField
+        Pv.DataSource = DS.Tables(1)
+
+        If Pv.Fields.Count = 0 Then
+            For x = 0 To DS.Tables(0).Rows.Count - 1
+                field = New DevExpress.Web.ASPxPivotGrid.PivotGridField(DS.Tables(0).Rows(x)("FIELD"), DS.Tables(0).Rows(x)("POSICION"))
+                field.Caption = DS.Tables(0).Rows(x)("NOMBRE")
+                field.Index = DS.Tables(0).Rows(x)("ORDEN")
+                field.CellFormat.FormatType = FormatType.Custom
+                If (DS.Tables(0).Rows(x)("FORMATO") <> "") Then field.CellFormat.FormatString = DS.Tables(0).Rows(x)("FORMATO")
+
+
+                Pv.Fields.Add(field)
+            Next
+        End If
+
+        Return Pv
+    End Function
+
+
+End Class

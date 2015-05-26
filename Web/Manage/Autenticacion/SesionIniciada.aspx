@@ -1,0 +1,40 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/MasterSlide.Master" CodeBehind="SesionIniciada.aspx.vb" Inherits="Web.SesionIniciada" %>
+
+<%@ Register Assembly="DevExpress.Web.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <dx:ASPxRoundPanel ID="rndpx_SesionIniciada" runat="server" Width="350px" 
+        Theme="DevEx" 
+        
+        HeaderText="Su sesión ya ha sido iniciada, desea cerrarla para poder continuar?">
+
+        <HeaderStyle Font-Bold="True" Font-Size="12px" ForeColor="#CC3300" />
+
+        <PanelCollection>
+<dx:PanelContent runat="server">
+    <table style="width:60%;" align="center">
+        <tr align="center">
+            <td>
+                <dx:ASPxButton ID="btn_AceptarSesionIniciada" runat="server" Text="Sí" 
+                    Theme="PlasticBlue" Width="150px">
+                </dx:ASPxButton>
+            </td>
+            <td class="auto-style1">
+                <dx:ASPxButton ID="btn_CancelarSesionIniciada" runat="server" Text="No" 
+                    Theme="PlasticBlue" Width="150px">
+                </dx:ASPxButton>
+            </td>
+        </tr>
+    </table>
+            </dx:PanelContent>
+</PanelCollection>
+
+    </dx:ASPxRoundPanel>
+</asp:Content>

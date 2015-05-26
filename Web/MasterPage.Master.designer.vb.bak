@@ -1,0 +1,231 @@
+﻿'------------------------------------------------------------------------------
+' <generado automáticamente>
+'     Este código fue generado por una herramienta.
+'
+'     Los cambios en este archivo podrían causar un comportamiento incorrecto y se perderán si
+'     se vuelve a generar el código. 
+' </generado automáticamente>
+'------------------------------------------------------------------------------
+
+Option Strict On
+Option Explicit On
+
+
+Partial Public Class MasterPage
+
+    '''<summary>
+    '''Control head.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents head As Global.System.Web.UI.WebControls.ContentPlaceHolder
+
+    '''<summary>
+    '''Control Master_Page.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Master_Page As Global.System.Web.UI.HtmlControls.HtmlForm
+
+    '''<summary>
+    '''Control ASPxDockManager1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ASPxDockManager1 As Global.DevExpress.Web.ASPxDocking.ASPxDockManager
+
+    '''<summary>
+    '''Control cbp_banner_superior.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cbp_banner_superior As Global.DevExpress.Web.ASPxCallbackPanel.ASPxCallbackPanel
+
+    '''<summary>
+    '''Control PanelContent1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents PanelContent1 As Global.DevExpress.Web.ASPxPanel.PanelContent
+
+    '''<summary>
+    '''Control lbl_inf_Nombre_Sistema.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbl_inf_Nombre_Sistema As Global.DevExpress.Web.ASPxEditors.ASPxLabel
+
+    '''<summary>
+    '''Control lbl_inf_bienvenido.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbl_inf_bienvenido As Global.DevExpress.Web.ASPxEditors.ASPxLabel
+
+    '''<summary>
+    '''Control lbl_inf_nombre_usuario.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbl_inf_nombre_usuario As Global.DevExpress.Web.ASPxEditors.ASPxLabel
+
+    '''<summary>
+    '''Control lnk_cerrar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lnk_cerrar As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
+    '''Control lbl_inf_dioma.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbl_inf_dioma As Global.DevExpress.Web.ASPxEditors.ASPxLabel
+
+    '''<summary>
+    '''Control cb_idioma.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cb_idioma As Global.DevExpress.Web.ASPxEditors.ASPxComboBox
+
+    '''<summary>
+    '''Control ASPxSplitter1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ASPxSplitter1 As Global.DevExpress.Web.ASPxSplitter.ASPxSplitter
+
+    '''<summary>
+    '''Control SplitterContentControl1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents SplitterContentControl1 As Global.DevExpress.Web.ASPxSplitter.SplitterContentControl
+
+    '''<summary>
+    '''Control cbp_menu.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cbp_menu As Global.DevExpress.Web.ASPxCallbackPanel.ASPxCallbackPanel
+
+    '''<summary>
+    '''Control PanelContent2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents PanelContent2 As Global.DevExpress.Web.ASPxPanel.PanelContent
+
+    '''<summary>
+    '''Control tvw_arbol.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents tvw_arbol As Global.DevExpress.Web.ASPxTreeView.ASPxTreeView
+
+    '''<summary>
+    '''Control rp_conectividad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents rp_conectividad As Global.DevExpress.Web.ASPxRoundPanel.ASPxRoundPanel
+
+    '''<summary>
+    '''Control PanelContent3.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents PanelContent3 As Global.DevExpress.Web.ASPxPanel.PanelContent
+
+    '''<summary>
+    '''Control lbl_des_conectividad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbl_des_conectividad As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control gc_Conectividad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents gc_Conectividad As Global.DevExpress.Web.ASPxGauges.ASPxGaugeControl
+
+    '''<summary>
+    '''Control SplitterContentControl2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents SplitterContentControl2 As Global.DevExpress.Web.ASPxSplitter.SplitterContentControl
+
+    '''<summary>
+    '''Control ContentPlaceHolder1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ContentPlaceHolder1 As Global.System.Web.UI.WebControls.ContentPlaceHolder
+
+    '''<summary>
+    '''Control lbl_param_idusuario.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbl_param_idusuario As Global.DevExpress.Web.ASPxEditors.ASPxLabel
+
+    '''<summary>
+    '''Control lbl_menu.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbl_menu As Global.System.Web.UI.WebControls.Label
+End Class

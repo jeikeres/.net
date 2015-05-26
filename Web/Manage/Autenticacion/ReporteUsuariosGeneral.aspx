@@ -1,0 +1,92 @@
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="ReporteUsuariosGeneral.aspx.vb" Inherits="Web.ReporteUsuariosGeneral" %>
+
+<%@ Register assembly="DevExpress.Web.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <dx:ASPxRoundPanel ID="rndpx_ReporteGeneralUsuarios" runat="server" 
+            HeaderText="Reporte General de Usuarios" Theme="MetropolisBlue" 
+            Width="100%">
+            <PanelCollection>
+<dx:PanelContent runat="server">
+    <dx:ASPxButton ID="ASPxButton1" runat="server" Text="Excel" 
+        Theme="MetropolisBlue">
+        <Image Url="~/App_Themes/Img/save.png">
+        </Image>
+    </dx:ASPxButton>
+    <br />
+    <br />
+    <dx:ASPxGridView ID="gdvx_ReporteUsuariosGeneral" runat="server" 
+        AutoGenerateColumns="False" EnableTheming="True" Font-Bold="False" 
+        Theme="MetropolisBlue" Width="100%">
+        <Columns>
+            <dx:GridViewDataTextColumn FieldName="Usuario" ShowInCustomizationForm="True" VisibleIndex="0">
+                <PropertiesTextEdit>
+                    <Style Font-Bold="True">
+                    </Style>
+                </PropertiesTextEdit>
+                <Settings AllowSort="False" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="Nombre" ShowInCustomizationForm="True" VisibleIndex="1">
+                <PropertiesTextEdit>
+                    <Style Font-Bold="True">
+                    </Style>
+                </PropertiesTextEdit>
+                <Settings AllowSort="False" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="Correo" ShowInCustomizationForm="True" VisibleIndex="2">
+                <Settings AllowSort="False" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="Empresa" ShowInCustomizationForm="True" VisibleIndex="3">
+                <Settings AllowSort="False" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="Cargo" ShowInCustomizationForm="True" VisibleIndex="4">
+                <Settings AllowSort="False" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="Perfil" ShowInCustomizationForm="True" VisibleIndex="5">
+                <Settings AllowSort="False" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="Fecha Alta" ShowInCustomizationForm="True" VisibleIndex="7">
+                <Settings AllowSort="False" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="Ultimo Login" ShowInCustomizationForm="True" VisibleIndex="8">
+                <Settings AllowSort="False" />
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataCheckColumn FieldName="Bloqueo" ShowInCustomizationForm="True" 
+                VisibleIndex="6">
+                <Settings AllowSort="False" />
+            </dx:GridViewDataCheckColumn>
+        </Columns>
+        <SettingsPager Visible="False">
+        </SettingsPager>
+        <SettingsDataSecurity AllowDelete="False" AllowEdit="False" AllowInsert="False" />
+        <Styles>
+            <Header HorizontalAlign="Center" VerticalAlign="Middle">
+            </Header>
+            <AlternatingRow BackColor="#CCFFFF">
+            </AlternatingRow>
+        </Styles>
+    </dx:ASPxGridView>
+                </dx:PanelContent>
+</PanelCollection>
+        </dx:ASPxRoundPanel>
+    
+    </div>
+    <dx:ASPxGridViewExporter ID="ASPxGridViewExporter1" runat="server" 
+        GridViewID="gdvx_ReporteUsuariosGeneral" ViewStateMode="Enabled">
+    </dx:ASPxGridViewExporter>
+    </form>
+</body>
+</html>

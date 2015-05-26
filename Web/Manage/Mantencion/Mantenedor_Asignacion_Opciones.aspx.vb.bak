@@ -1,0 +1,138 @@
+﻿Imports DevExpress.Web.ASPxGridView
+Imports DevExpress.Web.ASPxCallbackPanel
+Imports DevExpress.Web
+Imports System.Data
+Imports Negocio
+
+Public Class Mantenedor_Asignacion_Opciones
+    Inherits System.Web.UI.Page
+    Dim _Perfil As New cls_Perfil
+    Dim _Ds As New DataSet
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
+        If Not IsPostBack Then
+            Poblar_gdvx_perfil("")
+        Else
+            _Ds = Session("_DsMPerfiles")
+            For i = 0 To _Ds.Tables(0).Columns.Count() - 1
+                If ((_Ds.Tables(0).Columns(i).ToString <> "COD_FUNCION") And (_Ds.Tables(0).Columns(i).ToString <> "GLOSA") And (_Ds.Tables(0).Columns(i).ToString <> "ORDEN")) Then
+                    CType(gdvx_perfil.Columns(_Ds.Tables(0).Columns(i).ColumnName), GridViewDataColumn).DataItemTemplate = New CreaCheck
+                End If
+            Next
+            For y = 0 To Me.gdvx_perfil.VisibleRowCount - 1
+                For x = 0 To Me.gdvx_perfil.VisibleColumns.Count - 1
+                    If ((gdvx_perfil.Columns(x).Caption <> "COD_FUNCION") And (gdvx_perfil.Columns(x).Caption <> "ORDEN") And (gdvx_perfil.Columns(x).Caption <> "GLOSA")) Then
+                        Dim chk_ As ASPxCheckBox = CType(Me.gdvx_perfil.FindRowCellTemplateControl(y, gdvx_perfil.Columns(x), "chk_"), ASPxCheckBox)
+                        If gdvx_perfil.GetRowValues(y, gdvx_perfil.Columns(x).Caption).ToString() = 0 Then
+                            chk_.ClientVisible = False
+                        End If
+                    End If
+                Next
+            Next
+
+        End If
+    End Sub
+
+    Protected Sub Poblar_gdvx_perfil(ByVal CodPerfil As String)
+
+        gdvx_perfil.Columns.Clear()
+
+        _Perfil = New cls_Perfil
+        _Ds = _Perfil.DatosFuncOpt(CodPerfil)
+
+        Dim ColOpc As GridViewDataTextColumn
+
+        For i = 0 To _Ds.Tables(0).Columns.Count() - 1
+            ColOpc = New GridViewDataTextColumn
+
+            ColOpc.FieldName = _Ds.Tables(0).Columns(i).ToString
+            ColOpc.Caption = _Ds.Tables(0).Columns(i).ToString
+            ColOpc.ToolTip = _Ds.Tables(0).Columns(i).ToString
+            ColOpc.ToolTip.ToUpper()
+            ColOpc.HeaderStyle.HorizontalAlign = HorizontalAlign.Center
+            If ((_Ds.Tables(0).Columns(i).ToString <> "COD_FUNCION") And (_Ds.Tables(0).Columns(i).ToString <> "GLOSA")) Then
+                ColOpc.CellStyle.HorizontalAlign = HorizontalAlign.Center
+            Else
+                ColOpc.CellStyle.HorizontalAlign = HorizontalAlign.Left
+            End If
+
+            ColOpc.VisibleIndex = CInt(i)
+
+            If ((_Ds.Tables(0).Columns(i).ToString <> "COD_FUNCION") And (_Ds.Tables(0).Columns(i).ToString <> "GLOSA") And (_Ds.Tables(0).Columns(i).ToString <> "ORDEN")) Then
+                ColOpc.DataItemTemplate = New CreaCheck
+            End If
+
+            gdvx_perfil.Columns.Add(ColOpc)
+        Next
+
+        Session("_DsMPerfiles") = _Ds
+        gdvx_perfil.DataSource = _Ds
+        gdvx_perfil.DataBind()
+
+    End Sub
+
+    Friend Class CreaCheck
+        Implements ITemplate
+
+        Public Sub InstantiateIn(ByVal container As System.Web.UI.Control) Implements System.Web.UI.ITemplate.InstantiateIn
+            Dim CheckBox As New ASPxCheckBox()
+            Dim contenedor As GridViewDataItemTemplateContainer = CType(container, GridViewDataItemTemplateContainer)
+            Dim NombreColumna As String = contenedor.Column.FieldName
+
+            CheckBox.Value = NombreColumna
+            CheckBox.Theme = "MetropolisBlue"
+            CheckBox.ID = "chk_"
+            container.Controls.Add(CheckBox)
+        End Sub
+    End Class
+
+    Protected Sub gdvx_perfil_DataBound(sender As Object, e As System.EventArgs) Handles gdvx_perfil.DataBound
+
+
+        For y = 0 To Me.gdvx_perfil.VisibleRowCount - 1
+            For x = 0 To Me.gdvx_perfil.VisibleColumns.Count - 1
+                If ((gdvx_perfil.Columns(x).Caption <> "COD_FUNCION") And (gdvx_perfil.Columns(x).Caption <> "ORDEN") And (gdvx_perfil.Columns(x).Caption <> "GLOSA")) Then
+                    Dim chk_ As ASPxCheckBox = CType(Me.gdvx_perfil.FindRowCellTemplateControl(y, gdvx_perfil.Columns(x), "chk_"), ASPxCheckBox)
+                    If gdvx_perfil.GetRowValues(y, gdvx_perfil.Columns(x).Caption).ToString() = 0 Then
+                        chk_.ClientVisible = False
+                    End If
+                    If gdvx_perfil.GetRowValues(y, gdvx_perfil.Columns(x).Caption).ToString() = 2 Then
+                        chk_.Checked = True
+                    End If
+                End If
+            Next
+        Next
+    End Sub
+
+    Protected Sub btnx_guardar_Click(sender As Object, e As EventArgs) Handles btnx_guardar.Click
+        Dim Accion As String = "ELIMINAR"
+
+        For y = 0 To Me.gdvx_perfil.VisibleRowCount - 1
+            For x = 0 To Me.gdvx_perfil.VisibleColumns.Count - 1
+                If ((gdvx_perfil.Columns(x).Caption <> "COD_FUNCION") And (gdvx_perfil.Columns(x).Caption <> "ORDEN") And (gdvx_perfil.Columns(x).Caption <> "GLOSA")) Then
+
+                    Dim chk_ As ASPxCheckBox = CType(Me.gdvx_perfil.FindRowCellTemplateControl(y, gdvx_perfil.Columns(x), "chk_"), ASPxCheckBox)
+                    If Not chk_ Is Nothing Then
+                        If gdvx_perfil.GetRowValues(y, gdvx_perfil.Columns(x).Caption).ToString() <> 0 Then
+                            If chk_.Checked Then
+                                gdvx_perfil.GetRowValues(0, "COD_FUNCION").ToString()
+                                _Perfil.GuardarFunOpt(cbbx_perfil.SelectedItem.Value, gdvx_perfil.GetRowValues(y, "COD_FUNCION").ToString(), gdvx_perfil.Columns(x).Caption, Accion)
+                                Accion = ""
+                            End If
+                        End If
+                    End If
+                End If
+            Next
+        Next
+    End Sub
+
+    Protected Sub cbbx_perfil_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbbx_perfil.SelectedIndexChanged
+        MarcaOpciones()
+        btnx_guardar.Enabled = True
+    End Sub
+
+    Protected Sub MarcaOpciones()
+        Poblar_gdvx_perfil(cbbx_perfil.SelectedItem.Value)
+    End Sub
+End Class

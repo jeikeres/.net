@@ -1,0 +1,118 @@
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Mantenedor_Perfiles.aspx.vb" Inherits="Web.Mantenedor_Perfiles" %>
+
+<%@ Register assembly="DevExpress.Web.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web" tagprefix="dx" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <dx:ASPxRoundPanel ID="ASPxRoundPanel1" runat="server" HeaderText="Mantención de Perfiles" Theme="MetropolisBlue" Width="100%">
+            <PanelCollection>
+<dx:PanelContent runat="server">
+    
+                </dx:PanelContent>
+</PanelCollection>
+        </dx:ASPxRoundPanel>
+        <dx:ASPxRoundPanel ID="ASPxRoundPanel2" runat="server" Width="100%" ShowHeader="False" Theme="MetropolisBlue"><PanelCollection>
+<dx:PanelContent runat="server">
+    <dx:ASPxGridView ID="ASPxGridView1" runat="server" AutoGenerateColumns="False" DataSourceID="sds_perfiles" EnableTheming="True" KeyFieldName="COD_PERFIL" Theme="MetropolisBlue">
+        <Columns>
+            <dx:GridViewCommandColumn ShowDeleteButton="True" ButtonType="Image" ShowEditButton="True" ShowInCustomizationForm="True" ShowNewButtonInHeader="True" VisibleIndex="0">
+            </dx:GridViewCommandColumn>
+            <dx:GridViewDataTextColumn FieldName="COD_PERFIL" ReadOnly="True" ShowInCustomizationForm="True" VisibleIndex="0">
+                <EditFormSettings Caption="(*) Código" />
+                <EditFormCaptionStyle Font-Bold="true"></EditFormCaptionStyle>
+                <PropertiesTextEdit>
+                    <ClientSideEvents Init="function(s,e){s.Validate();}" />
+                    <ValidationSettings ErrorDisplayMode="Text">
+                    <RequiredField IsRequired="True" ErrorText="*">
+                    </RequiredField>
+                        <ErrorFrameStyle Font-Bold="true" Font-Size="Large"></ErrorFrameStyle>
+                    </ValidationSettings>
+                </PropertiesTextEdit>
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="GLOSA" ShowInCustomizationForm="True" VisibleIndex="1">
+            <EditFormSettings Caption="(*) Glosa" />
+                <EditFormCaptionStyle Font-Bold="true"></EditFormCaptionStyle>
+                <PropertiesTextEdit>
+                    <ClientSideEvents Init="function(s,e){s.Validate();}" />
+                    <ValidationSettings ErrorDisplayMode="Text">
+                    <RequiredField IsRequired="True" ErrorText="*">
+                    </RequiredField>
+                        <ErrorFrameStyle Font-Bold="true" Font-Size="Large"></ErrorFrameStyle>
+                    </ValidationSettings>
+                </PropertiesTextEdit>
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="ABREV" ShowInCustomizationForm="True" VisibleIndex="2">
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataCheckColumn FieldName="IND_ACTIVO" ShowInCustomizationForm="True" VisibleIndex="3">
+                <EditFormSettings Caption="(*) Activo" />
+                <EditFormCaptionStyle Font-Bold="true"></EditFormCaptionStyle>
+                <PropertiesCheckEdit>
+                    <ClientSideEvents Init="function(s,e){s.Validate();}" />
+                    <ValidationSettings ErrorDisplayMode="Text">
+                    <RequiredField IsRequired="True"  ErrorText="*">
+                    </RequiredField>
+                        <ErrorFrameStyle Font-Bold="true" Font-Size="Large"></ErrorFrameStyle>
+                    </ValidationSettings>
+                </PropertiesCheckEdit>
+            </dx:GridViewDataCheckColumn>
+        </Columns>
+                    <SettingsBehavior ConfirmDelete="True" />
+            <SettingsText ConfirmDelete="Está seguro que desea continuar?" />
+         <SettingsCommandButton>
+             <NewButton>
+                 <Image ToolTip="Nuevo" Url="../../App_Themes/Default/img/grid/add_black.png"></Image>
+             </NewButton>
+             <DeleteButton>
+                 <Image ToolTip="Eliminar" Url="../../App_Themes/Default/img/grid/cancel_black.png"></Image>
+             </DeleteButton>
+             <EditButton>
+                 <Image ToolTip="Editar" Url="../../App_Themes/Default/img/grid/edit_black.png"></Image>
+             </EditButton>
+             <UpdateButton>
+                 <Image Width="29px" Height="29px" ToolTip="Actualizar" Url="../../App_Themes/Default/img/grid/guardar_black.png"></Image>
+             </UpdateButton>
+             <CancelButton>
+                 <Image Width="24px" Height="24px" ToolTip="Cancelar" Url="../../App_Themes/Default/img/grid/delete_black.png"></Image>
+             </CancelButton>
+         </SettingsCommandButton>
+    </dx:ASPxGridView>
+            </dx:PanelContent>
+</PanelCollection>
+        </dx:ASPxRoundPanel>
+        <asp:SqlDataSource ID="sds_perfiles" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:GESTRAN_SISTEMA %>" DeleteCommand="DELETE FROM [GS_PERFIL] WHERE [COD_PERFIL] = @original_COD_PERFIL AND (([GLOSA] = @original_GLOSA) OR ([GLOSA] IS NULL AND @original_GLOSA IS NULL)) AND (([ABREV] = @original_ABREV) OR ([ABREV] IS NULL AND @original_ABREV IS NULL)) AND (([IND_ACTIVO] = @original_IND_ACTIVO) OR ([IND_ACTIVO] IS NULL AND @original_IND_ACTIVO IS NULL))" InsertCommand="INSERT INTO [GS_PERFIL] ([COD_PERFIL], [GLOSA], [ABREV], [IND_ACTIVO]) VALUES (@COD_PERFIL, @GLOSA, @ABREV, @IND_ACTIVO)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT [COD_PERFIL], [GLOSA], [ABREV], [IND_ACTIVO] FROM [GS_PERFIL]" UpdateCommand="UPDATE [GS_PERFIL] SET [GLOSA] = @GLOSA, [ABREV] = @ABREV, [IND_ACTIVO] = @IND_ACTIVO WHERE [COD_PERFIL] = @original_COD_PERFIL AND (([GLOSA] = @original_GLOSA) OR ([GLOSA] IS NULL AND @original_GLOSA IS NULL)) AND (([ABREV] = @original_ABREV) OR ([ABREV] IS NULL AND @original_ABREV IS NULL)) AND (([IND_ACTIVO] = @original_IND_ACTIVO) OR ([IND_ACTIVO] IS NULL AND @original_IND_ACTIVO IS NULL))">
+        <DeleteParameters>
+            <asp:Parameter Name="original_COD_PERFIL" Type="String" />
+            <asp:Parameter Name="original_GLOSA" Type="String" />
+            <asp:Parameter Name="original_ABREV" Type="String" />
+            <asp:Parameter Name="original_IND_ACTIVO" Type="Boolean" />
+        </DeleteParameters>
+        <InsertParameters>
+            <asp:Parameter Name="COD_PERFIL" Type="String" />
+            <asp:Parameter Name="GLOSA" Type="String" />
+            <asp:Parameter Name="ABREV" Type="String" />
+            <asp:Parameter Name="IND_ACTIVO" Type="Boolean" />
+        </InsertParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="GLOSA" Type="String" />
+            <asp:Parameter Name="ABREV" Type="String" />
+            <asp:Parameter Name="IND_ACTIVO" Type="Boolean" />
+            <asp:Parameter Name="original_COD_PERFIL" Type="String" />
+            <asp:Parameter Name="original_GLOSA" Type="String" />
+            <asp:Parameter Name="original_ABREV" Type="String" />
+            <asp:Parameter Name="original_IND_ACTIVO" Type="Boolean" />
+        </UpdateParameters>
+    </asp:SqlDataSource>
+
+    </div>
+    </form>
+</body>
+</html>
