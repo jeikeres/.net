@@ -15,6 +15,10 @@
     background-repeat:no-repeat;
 }
 
+#header_nuevo {
+    background-color: #F9090A;
+}
+
 .image_pattern
 {
     position:absolute; 

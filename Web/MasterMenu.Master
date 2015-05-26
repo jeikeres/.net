@@ -68,7 +68,7 @@
                                     ClientInstanceName="Banner_Superior" >
                                     <PanelCollection>
 <dx:PanelContent ID="PanelContent1" runat="server" SupportsDisabledAttribute="True">
-    <table class="style2">
+    <table class="style2" style="background-color:rgba(254, 0, 0, 1)">
         <tr>
             <td  rowspan="2" style="margin-left:50px; width:25%">
             <div class="image_logo"></div>
