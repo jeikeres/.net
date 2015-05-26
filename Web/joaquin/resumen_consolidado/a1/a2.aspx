@@ -11,10 +11,7 @@
     <form id="form1" runat="server">
     <div>
         <h1>Stock de Garantías</h1>
-        <h2>(Valor de Garantía)</h2>
-
-    </div>
-        <dx:ASPxGridView ID="ASPxGridView1" Style="margin:auto;" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Theme="Metropolis">
+        <h2>(Valor de Garantía)<dx:ASPxGridView ID="ASPxGridView1" style="margin:auto" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Theme="Metropolis">
             <Columns>
                 <dx:GridViewDataTextColumn FieldName="nombre tipo" ReadOnly="True" VisibleIndex="0">
                 </dx:GridViewDataTextColumn>
@@ -23,8 +20,12 @@
                 <dx:GridViewDataTextColumn FieldName="Promedio UF x Grtia" ReadOnly="True" VisibleIndex="2">
                 </dx:GridViewDataTextColumn>
             </Columns>
-        </dx:ASPxGridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RESUMENESConnectionString2 %>" SelectCommand="promedios" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+            </dx:ASPxGridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RESUMENESConnection250 %>" SelectCommand="promedios" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+        </h2>
+        <p>&nbsp;</p>
+
+    </div>
     </form>
 </body>
 </html>
