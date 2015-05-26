@@ -44,7 +44,7 @@
                 <cc1:ChartTitle Text="STOCK DE GARANTÍAS" />
             </titles>
         </dxchartsui:WebChartControl>
-&nbsp;<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:GARANTIA_DICIEMBRE2014ConnectionString %>" SelectCommand="total" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+&nbsp;<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:RESUMENESConnectionString %>" SelectCommand="total" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     </div>
     </form>
 </body>
