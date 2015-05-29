@@ -23,6 +23,24 @@ Partial Public Class a1_1
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
+    '''Control WebChartControl1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents WebChartControl1 As Global.DevExpress.XtraCharts.Web.WebChartControl
+
+    '''<summary>
+    '''Control SqlDataSource2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents SqlDataSource2 As Global.System.Web.UI.WebControls.SqlDataSource
+
+    '''<summary>
     '''Control ASPxGridView1.
     '''</summary>
     '''<remarks>
